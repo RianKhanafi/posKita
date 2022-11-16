@@ -3,6 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Link from "next/link";
 import { colors } from "theme/colors";
 import { extendTheme } from "@chakra-ui/react";
+import "styles/globals.css";
 
 const theme = extendTheme({ colors });
 

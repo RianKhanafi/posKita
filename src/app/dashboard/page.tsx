@@ -2,6 +2,7 @@ import {
   Button,
   ButtonIcon,
   Input,
+  Pagination,
   Select,
   Switch,
   Text,
@@ -109,7 +110,7 @@ export default async function () {
       <Modal>
         <div>as</div>
       </Modal>
-      <Table header={columns} data={data} />
+      <Table header={columns} data={data} total={1000} pageSize={10} />
       <ul>
         {products.map((prod: any) => {
           return (

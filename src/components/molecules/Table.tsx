@@ -10,8 +10,9 @@ import {
   TableContainer,
   Box,
 } from "@chakra-ui/react";
-import { Text } from "components/atoms";
-import React from "react";
+import { Pagination, Text } from "components/atoms";
+import { PaginationProps } from "rc-pagination";
+import React, { useState } from "react";
 
 export enum EAlignment {
   left = "left",
@@ -31,14 +32,14 @@ export type ITableHeader<T, K extends keyof T> = {
   header: Array<ColumnDefinitionType<T, K>>;
 };
 
-type TableRowsProps<T, K extends keyof T> = {
+interface TableRowsProps<T, K extends keyof T> extends PaginationProps {
   data: Array<T>;
   header: Array<ColumnDefinitionType<T, K>>;
   noData?: string;
   onClickRow?: (e: T) => void;
   loading?: boolean;
   headerTitle?: string;
-};
+}
 
 const TableHeader = <T, K extends keyof T>({
   header,
@@ -87,8 +88,12 @@ const TableBody = <T, K extends keyof T>({
 export default function Table<T, K extends keyof T>({
   header,
   data,
+  total,
+  pageSize = 10,
+  onChange,
   headerTitle = "Header Title",
 }: TableRowsProps<T, K>): JSX.Element {
+  const [page, setPage] = useState<number>(1);
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
       <Text py="6" px="6" fontSize={19} fontWeight="bold">
@@ -96,11 +101,18 @@ export default function Table<T, K extends keyof T>({
       </Text>
       <TableContainer>
         <TableChakraUI variant="simple">
-          <TableCaption>Imperial to metric conversion factors</TableCaption>
           <TableHeader header={header} />
           <TableBody header={header} data={data} />
         </TableChakraUI>
       </TableContainer>
+      <Box display="flex" justifyContent="flex-end">
+        <Pagination
+          total={total!}
+          pageSize={pageSize}
+          current={page}
+          onChange={onChange}
+        />
+      </Box>
     </Box>
   );
 }

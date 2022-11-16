@@ -5,3 +5,4 @@ export { default as Text } from "./text";
 export { default as Switch } from "./switch";
 export { default as Select } from "./select";
 export { default as Upload } from "./upload";
+export { default as Pagination } from "./pagination";
