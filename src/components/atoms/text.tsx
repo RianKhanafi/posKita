@@ -1,6 +1,7 @@
 "use client";
-import { Text as ChakraUI, TextProps } from "@chakra-ui/react";
+import { Text as TextChakraUI, TextProps } from "@chakra-ui/react";
+import Icons, { IconsName } from "assets/icons";
 
 export default function Text({ children, ...rest }: TextProps) {
-  return <ChakraUI {...rest}>{children}</ChakraUI>;
+  return <TextChakraUI {...rest}>{children}</TextChakraUI>;
 }

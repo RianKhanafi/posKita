@@ -1,3 +1,5 @@
+"use client";
+import { Box } from "@chakra-ui/react";
 import {
   Button,
   ButtonIcon,
@@ -7,15 +9,17 @@ import {
   Select,
   Switch,
   Text,
+  TextIcon,
   Upload,
 } from "components/atoms";
 import { FormInput, Modal } from "components/molecules";
 import Table, { ColumnDefinitionType } from "components/molecules/Table";
+import { useState } from "react";
 
-async function getProducts() {
-  const products = await fetch(`https://dummyjson.com/products?limit=5`);
-  return products.json();
-}
+// async function getProducts() {
+//   const products = await fetch(`https://dummyjson.com/products?limit=5`);
+//   return products.json();
+// }
 
 interface Cat {
   name: string;
@@ -87,13 +91,40 @@ const data: Cat[] = [
   },
 ];
 
-export default async function () {
-  const { products } = await getProducts();
-
+export default function () {
+  // const { products } = await getProducts();
+  const [page, setPage] = useState<number>(1);
   // console.log(products);
   return (
     <div>
-      <ul>
+      <Popover />
+      <Button type="secondary" />
+      <ButtonIcon type="secondary" />
+      <Input placeholder="Placehodler" />
+      <Text>Text</Text>
+      <Switch />
+      <br />
+      <FormInput inputType="input" />
+      <FormInput inputType="switch" />
+      <FormInput>
+        <Select
+          options={[{ id: 1, label: "Opt 1", value: "Opt 1" }]}
+          width={167}
+        />
+      </FormInput>
+      <Upload />
+      <Modal>
+        <div>as</div>
+      </Modal>
+      <Table
+        header={columns}
+        data={data}
+        total={1000}
+        pageSize={10}
+        current={page}
+        onChange={(e) => setPage(e)}
+      />
+      {/* <ul>
         {products.map((prod: any) => {
           return (
             <li className="text-red-200" key={prod.id}>
@@ -101,7 +132,11 @@ export default async function () {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
+      <TextIcon color="gray.medium" fontSize="16px" fontWeight="semibold">
+        Dashboard
+      </TextIcon>
+      <Box mb="200px" />
     </div>
   );
 }
