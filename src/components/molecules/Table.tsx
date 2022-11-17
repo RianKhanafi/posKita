@@ -91,9 +91,9 @@ export default function Table<T, K extends keyof T>({
   total,
   pageSize = 10,
   onChange,
+  current,
   headerTitle = "Header Title",
 }: TableRowsProps<T, K>): JSX.Element {
-  const [page, setPage] = useState<number>(1);
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
       <Text py="6" px="6" fontSize={19} fontWeight="bold">
@@ -109,7 +109,7 @@ export default function Table<T, K extends keyof T>({
         <Pagination
           total={total!}
           pageSize={pageSize}
-          current={page}
+          current={current}
           onChange={onChange}
         />
       </Box>
