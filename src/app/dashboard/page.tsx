@@ -1,3 +1,4 @@
+"use client";
 import {
   Button,
   ButtonIcon,
@@ -10,11 +11,12 @@ import {
 } from "components/atoms";
 import { FormInput, Modal } from "components/molecules";
 import Table, { ColumnDefinitionType } from "components/molecules/Table";
+import { useState } from "react";
 
-async function getProducts() {
-  const products = await fetch(`https://dummyjson.com/products?limit=5`);
-  return products.json();
-}
+// async function getProducts() {
+//   const products = await fetch(`https://dummyjson.com/products?limit=5`);
+//   return products.json();
+// }
 
 interface Cat {
   name: string;
@@ -86,10 +88,10 @@ const data: Cat[] = [
   },
 ];
 
-export default async function () {
-  const { products } = await getProducts();
-
-  console.log(products);
+export default function () {
+  // const { products } = await getProducts();
+  const [page, setPage] = useState<number>(1);
+  // console.log(products);
   return (
     <div>
       <Button type="secondary" />
@@ -115,9 +117,10 @@ export default async function () {
         data={data}
         total={1000}
         pageSize={10}
-        current={1}
+        current={page}
+        onChange={(e) => setPage(e)}
       />
-      <ul>
+      {/* <ul>
         {products.map((prod: any) => {
           return (
             <li className="text-red-200" key={prod.id}>
@@ -125,7 +128,7 @@ export default async function () {
             </li>
           );
         })}
-      </ul>
+      </ul> */}
     </div>
   );
 }

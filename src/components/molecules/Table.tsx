@@ -105,7 +105,18 @@ export default function Table<T, K extends keyof T>({
           <TableBody header={header} data={data} />
         </TableChakraUI>
       </TableContainer>
-      <Box display="flex" justifyContent="flex-end">
+      <Box
+        display="flex"
+        justifyContent="space-between"
+        alignItems="center"
+        my="5"
+        px="6"
+      >
+        <Box>
+          <Text color="#9FA2B4" fontSize="14px">
+            Tampil {data?.length} Dari {total} data
+          </Text>
+        </Box>
         <Pagination
           total={total!}
           pageSize={pageSize}

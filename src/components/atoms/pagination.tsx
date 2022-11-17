@@ -3,7 +3,7 @@ import React from "react";
 
 import Pagination, { PaginationProps } from "rc-pagination";
 import Icons, { IconsName } from "assets/icons";
-import { Box } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 const itemRender =
   (active?: number) =>
@@ -12,14 +12,23 @@ const itemRender =
       return (
         <Box
           rounded="5px"
-          width={30}
+          minW={30}
           height={30}
-          textAlign="center"
-          fontWeight="semibold"
-          //   borderColor={current === active ? "primary.hard" : "dark.soft"}
+          fontWeight="medium"
+          fontSize="14px"
+          border="1px"
+          borderColor={current === active ? "primary.hard" : "dark.ultrasoft"}
           color={current === active ? "primary.hard" : "gray.medium"}
+          mx="4px"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          px="6px"
+          cursor="pointer"
         >
-          {current}
+          <Box>
+            <Text>{current}</Text>
+          </Box>
         </Box>
       );
     }
@@ -35,10 +44,10 @@ export default function PaginationComponent({
   pageSize,
   ...rest
 }: IPaginationProps) {
-  //   const totalPage = React.useMemo(
-  //     () => Math.ceil(total / pageSize!),
-  //     [total, pageSize]
-  //   );
+  const totalPage = React.useMemo(
+    () => Math.ceil(total / pageSize!),
+    [total, pageSize]
+  );
 
   return (
     <>
@@ -59,14 +68,42 @@ export default function PaginationComponent({
           </Box>
         }
         nextIcon={
-          <div>
+          <Box
+            rounded="5px"
+            minW={30}
+            height={30}
+            fontWeight="semibold"
+            backgroundColor={current === totalPage ? "gray.soft" : ""}
+            color={current === totalPage ? "primary.hard" : "dark.soft"}
+            mx="4px"
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
+            px="5px"
+            cursor="pointer"
+          >
             <Icons name={IconsName.chevronRight} />
-          </div>
+          </Box>
         }
         prevIcon={
-          <div>
-            <Icons name={IconsName.chevronLeft} />
-          </div>
+          <Box
+            rounded="5px"
+            minW={30}
+            height={30}
+            textAlign="center"
+            fontWeight="semibold"
+            backgroundColor={current! <= 1 ? "gray.soft" : ""}
+            color={current! <= 1 ? "primary.hard" : "dark.soft"}
+            mx="4px"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            cursor="pointer"
+          >
+            <Box>
+              <Icons name={IconsName.chevronLeft} />
+            </Box>
+          </Box>
         }
         {...rest}
       />

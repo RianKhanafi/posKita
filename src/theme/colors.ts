@@ -8,7 +8,8 @@ export const colors = {
   dark: {
     hard: "#24314B",
     medium: "#353E51",
-    soft: "#C2C5CB",
+    soft: "#9FA2B4",
+    ultrasoft: "#C2C5CB",
   },
   gray: {
     hard: "#3F4859",

@@ -18,7 +18,7 @@ export default function Input({
       value={value}
       placeholder={placeholder}
       color="dark.medium"
-      borderColor="dark.soft"
+      borderColor="dark.ultrasoft"
       onChange={onChange}
       width={full ? "100%" : width ? width : "564px"}
       {...rest}
