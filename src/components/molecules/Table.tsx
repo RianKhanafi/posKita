@@ -12,7 +12,8 @@ import {
 } from "@chakra-ui/react";
 import { Pagination, Text } from "components/atoms";
 import { PaginationProps } from "rc-pagination";
-import React, { useState } from "react";
+import React from "react";
+import { colors } from "theme/colors";
 
 export enum EAlignment {
   left = "left",
@@ -39,6 +40,7 @@ interface TableRowsProps<T, K extends keyof T> extends PaginationProps {
   onClickRow?: (e: T) => void;
   loading?: boolean;
   headerTitle?: string;
+  headerChildren?: React.ReactNode;
 }
 
 const TableHeader = <T, K extends keyof T>({
@@ -64,12 +66,22 @@ const TableBody = <T, K extends keyof T>({
   return (
     <Tbody>
       {data.map((elm: T, idx1: number) => (
-        <Tr key={`tr-${idx1}`}>
+        <Tr
+          key={`tr-${idx1}`}
+          height="15px"
+          _hover={{
+            backgroundColor: colors.gray.soft,
+          }}
+        >
           {header.map((head, idx2) => (
             <Td
               color="dark.hard"
               isNumeric={head?.isNumeric}
               key={`td-${idx2}`}
+              fontSize="15px"
+              height="15px"
+              py="13px"
+              width={head.width}
             >
               <div>
                 {head.renders
@@ -93,12 +105,18 @@ export default function Table<T, K extends keyof T>({
   onChange,
   current,
   headerTitle = "Header Title",
+  headerChildren = <div />,
 }: TableRowsProps<T, K>): JSX.Element {
   return (
     <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Text py="6" px="6" fontSize={19} fontWeight="bold">
-        {headerTitle}
-      </Text>
+      <Box display="flex" justifyContent="space-between" py="6" px="6">
+        <Box>
+          <Text fontSize={19} fontWeight="bold">
+            {headerTitle}
+          </Text>
+        </Box>
+        <Box>{headerChildren}</Box>
+      </Box>
       <TableContainer>
         <TableChakraUI variant="simple">
           <TableHeader header={header} />
@@ -109,7 +127,7 @@ export default function Table<T, K extends keyof T>({
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        my="5"
+        my="3"
         px="6"
       >
         <Box>

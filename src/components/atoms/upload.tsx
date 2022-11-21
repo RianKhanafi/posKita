@@ -65,7 +65,7 @@ export default function Upload({ onChange }: IUpload) {
   const stopAnimation = () => controls.stop();
   return (
     <div>
-      <AspectRatio width="64" ratio={1}>
+      <AspectRatio width="60" ratio={1}>
         <Box
           borderColor="gray.300"
           borderStyle="dashed"
@@ -107,10 +107,9 @@ export default function Upload({ onChange }: IUpload) {
                   />
                 </Box> */}
                 <Stack p="8" textAlign="center" spacing="1">
-                  <Heading fontSize="lg" color="gray.700" fontWeight="bold">
-                    Drop images here
-                  </Heading>
-                  <Text fontWeight="light">or click to upload</Text>
+                  <Text fontWeight="light">
+                    Click to browse or drag and drop your files
+                  </Text>
                 </Stack>
               </Stack>
             </Box>

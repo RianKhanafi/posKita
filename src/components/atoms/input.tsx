@@ -20,8 +20,11 @@ export default function Input({
       color="dark.medium"
       borderColor="dark.ultrasoft"
       onChange={onChange}
-      width={full ? "100%" : width ? width : "564px"}
+      width={full ? "100%" : width ? width : "100%"}
       {...rest}
+      height="48px"
+      borderRadius="8px"
+      fontSize="16px"
     />
   );
 }

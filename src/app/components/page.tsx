@@ -14,6 +14,8 @@ import {
 } from "components/atoms";
 import { FormInput, Modal } from "components/molecules";
 import Table, { ColumnDefinitionType } from "components/molecules/Table";
+import Header from "components/organisme/header";
+import Navbar from "components/organisme/navbar";
 import { useState } from "react";
 
 // async function getProducts() {
@@ -91,15 +93,15 @@ const data: Cat[] = [
   },
 ];
 
-export default function () {
+export default function Components() {
   // const { products } = await getProducts();
   const [page, setPage] = useState<number>(1);
   // console.log(products);
   return (
     <div>
       <Popover />
-      <Button type="secondary" />
-      <ButtonIcon type="secondary" />
+      <Button typeButton="secondary" />
+      <ButtonIcon typeButton="secondary" />
       <Input placeholder="Placehodler" />
       <Text>Text</Text>
       <Switch />
@@ -113,9 +115,9 @@ export default function () {
         />
       </FormInput>
       <Upload />
-      <Modal>
+      {/* <Modal>
         <div>as</div>
-      </Modal>
+      </Modal> */}
       <Table
         header={columns}
         data={data}
@@ -137,6 +139,8 @@ export default function () {
         Dashboard
       </TextIcon>
       <Box mb="200px" />
+      <Header />
+      <Navbar />
     </div>
   );
 }

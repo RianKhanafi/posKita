@@ -15,6 +15,7 @@ interface IFormInput extends InputProps {
   errorMessage?: string;
   inputType?: "input" | "switch" | "select";
   children?: React.ReactNode;
+  full?: boolean;
 }
 
 export default function FormInput({
@@ -29,6 +30,7 @@ export default function FormInput({
   optionsSelect,
   children,
   isInvalid,
+  full,
   ...rest
 }: IFormInput) {
   const renderInput = () => {
@@ -39,6 +41,7 @@ export default function FormInput({
             value={value}
             placeholder={placeholder}
             onChange={onChange}
+            full={full}
             {...rest}
           />
         );

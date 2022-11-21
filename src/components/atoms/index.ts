@@ -8,3 +8,4 @@ export { default as Upload } from "./upload";
 export { default as Pagination } from "./pagination";
 export { default as Popover } from "./Popover";
 export { default as TextIcon } from "./textIcon";
+export { default as LineChart } from "./lineChart";

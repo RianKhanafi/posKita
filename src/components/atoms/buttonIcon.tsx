@@ -1,38 +1,43 @@
 "use client";
-import { Button as ChakraButton } from "@chakra-ui/react";
+import { Box, Button as ChakraButton, ButtonProps } from "@chakra-ui/react";
 import classNames from "classnames";
 import Icons, { IconsName } from "assets/icons";
 import { colors } from "theme/colors";
 import React from "react";
 
-type TTYpe = "primary" | "secondary";
+type TTYpe = "primary" | "secondary" | "none";
 
-interface TButton {
-  type: TTYpe;
+interface TButton extends ButtonProps {
+  typeButton: TTYpe;
   full?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
+  iconName?: IconsName;
 }
 
 export default function ButtonIcon({
-  type,
+  typeButton,
   full,
   onClick,
-  children = <span>Button</span>,
+  children,
+  iconName,
+  ...rest
 }: TButton) {
   const buttonType = classNames({
-    "primary.hard": type === "primary",
-    "gray.soft": type === "secondary",
+    "primary.hard": typeButton === "primary",
+    "gray.soft": typeButton === "secondary",
+    transparent: typeButton === "none",
   });
 
   const buttonTypeColor = classNames({
-    white: type === "primary",
-    "dark.medium": type === "secondary",
+    white: typeButton === "primary",
+    "dark.medium": typeButton === "secondary" || typeButton === "none",
   });
 
   const IconButtonColor = classNames({
-    white: type === "primary",
-    [`${colors.dark.medium}`]: type === "secondary",
+    white: typeButton === "primary",
+    [`${colors.primary.hard}`]: typeButton === "secondary",
+    [`${colors.dark.medium}`]: typeButton === "none",
   });
 
   return (
@@ -40,9 +45,19 @@ export default function ButtonIcon({
       color={buttonTypeColor}
       bg={buttonType}
       fontSize={16}
-      width={full ? "100%" : 172}
+      width={full ? "100%" : "auto"}
       onClick={onClick}
-      leftIcon={<Icons name={IconsName.plus} color={IconButtonColor} />}
+      _hover={{
+        backgroundColor:
+          typeButton === "primary" ? colors.primary.soft : colors.gray.soft,
+      }}
+      leftIcon={
+        <Box ml="5px">
+          <Icons name={iconName} color={IconButtonColor} />
+        </Box>
+      }
+      height="48px"
+      {...rest}
     >
       {children}
     </ChakraButton>

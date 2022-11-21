@@ -58,12 +58,12 @@ export default function PaginationComponent({
         pageSize={pageSize}
         itemRender={itemRender(current)}
         jumpPrevIcon={
-          <Box transform="rotate(90deg)">
+          <Box transform="rotate(90deg)" cursor="pointer">
             <Icons name={IconsName.more} />
           </Box>
         }
         jumpNextIcon={
-          <Box transform="rotate(90deg)">
+          <Box transform="rotate(90deg)" cursor="pointer">
             <Icons name={IconsName.more} />
           </Box>
         }
@@ -80,7 +80,7 @@ export default function PaginationComponent({
             justifyContent="center"
             alignItems="center"
             px="5px"
-            cursor="pointer"
+            cursor={current === totalPage ? "not-allowed" : "pointer"}
           >
             <Icons name={IconsName.chevronRight} />
           </Box>
@@ -98,7 +98,7 @@ export default function PaginationComponent({
             display="flex"
             alignItems="center"
             justifyContent="center"
-            cursor="pointer"
+            cursor={current! <= 1 ? "not-allowed" : "pointer"}
           >
             <Box>
               <Icons name={IconsName.chevronLeft} />

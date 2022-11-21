@@ -16,7 +16,12 @@ export default function Select({
   ...props
 }: ISelect) {
   return (
-    <SelectChakraUI placeholder={placeholder} {...props}>
+    <SelectChakraUI
+      placeholder={placeholder}
+      {...props}
+      height="48px"
+      borderRadius="8px"
+    >
       {options?.map((option, index) => (
         <option value={option.value} key={index}>
           {option.value}

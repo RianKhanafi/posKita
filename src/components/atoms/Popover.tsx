@@ -21,9 +21,9 @@ interface IPopover extends PopoverProps {
 
 export default function Popover({ children, close = true }: IPopover) {
   return (
-    <PopoverChakraUI>
+    <PopoverChakraUI isLazy>
       <PopoverTrigger>
-        <Button type="primary">Trigger</Button>
+        <Button typeButton="primary">Trigger</Button>
       </PopoverTrigger>
       <PopoverContent
         width="auto"

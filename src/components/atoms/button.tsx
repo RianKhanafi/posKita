@@ -1,31 +1,33 @@
 "use client";
-import { Button as ChakraButton } from "@chakra-ui/react";
+import { Button as ChakraButton, ButtonProps } from "@chakra-ui/react";
 import classNames from "classnames";
 import React from "react";
+import { colors } from "theme/colors";
 
 type TTYpe = "primary" | "secondary";
 
-interface TButton {
-  type: TTYpe;
+interface TButton extends ButtonProps {
+  typeButton: TTYpe;
   full?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
 }
 
 export default function Button({
-  type,
+  typeButton,
   full,
   onClick,
   children = <span>Button</span>,
+  ...rest
 }: TButton) {
   const buttonType = classNames({
-    "primary.hard": type === "primary",
-    "gray.soft": type === "secondary",
+    "primary.hard": typeButton === "primary",
+    "gray.soft": typeButton === "secondary",
   });
 
   const buttonTypeColor = classNames({
-    white: type === "primary",
-    "dark.medium": type === "secondary",
+    white: typeButton === "primary",
+    "dark.medium": typeButton === "secondary",
   });
 
   return (
@@ -35,6 +37,12 @@ export default function Button({
       fontSize={16}
       width={full ? "100%" : 172}
       onClick={onClick}
+      height="48px"
+      _hover={{
+        backgroundColor:
+          typeButton === "primary" ? colors.primary.soft : colors.gray.soft,
+      }}
+      {...rest}
     >
       {children}
     </ChakraButton>

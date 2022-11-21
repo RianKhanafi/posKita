@@ -1,6 +1,6 @@
 "use client";
 import { Spacer, useDisclosure } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Modal as ModalChakraUI,
   ModalOverlay,
@@ -9,15 +9,21 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  ModalProps,
 } from "@chakra-ui/react";
 import { Button } from "components/atoms";
+export interface IOpenModal {
+  setOpenModal: React.Dispatch<React.SetStateAction<boolean>>;
+  openModal: boolean;
+}
 
-interface IModal {
+interface IModal extends IOpenModal {
   title?: string;
   primaryTitle?: string;
   secondaryTitle?: string;
   children: React.ReactNode;
   footer?: boolean;
+  size: string;
 }
 
 export default function Modal({
@@ -26,16 +32,27 @@ export default function Modal({
   secondaryTitle = "Batal",
   children,
   footer = true,
+  openModal,
+  setOpenModal,
+  size,
 }: IModal) {
-  const { isOpen, onClose } = useDisclosure();
+  const { isOpen, onClose, onOpen } = useDisclosure();
   const finalRef = React.useRef(null);
+
+  useEffect(() => {
+    console.log("openModal =>", openModal);
+    if (openModal) onOpen();
+  }, [openModal]);
 
   return (
     <ModalChakraUI
       finalFocusRef={finalRef}
       isOpen={isOpen}
-      onClose={onClose}
-      size="xl"
+      onClose={() => {
+        onClose();
+        setOpenModal(false);
+      }}
+      size={size}
     >
       <ModalOverlay />
       <ModalContent>
@@ -45,11 +62,11 @@ export default function Modal({
 
         {footer ? (
           <ModalFooter>
-            <Button type="primary" onClick={onClose}>
-              {primaryTitle}
+            <Button typeButton="secondary" onClick={onClose}>
+              {secondaryTitle}
             </Button>
             <Spacer />
-            <Button type="secondary">{secondaryTitle}</Button>
+            <Button typeButton="primary">{primaryTitle}</Button>
           </ModalFooter>
         ) : null}
       </ModalContent>
