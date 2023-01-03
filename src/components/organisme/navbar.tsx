@@ -4,7 +4,9 @@ import { Box, color } from "@chakra-ui/react";
 import { IconsName } from "assets/icons";
 import { TextIcon } from "components/atoms";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { logout } from "store/features/users";
+import { useAppDispatch } from "store/hook";
 import { colors } from "theme/colors";
 
 interface menus {
@@ -51,6 +53,8 @@ const menus: menus[] = [
 ];
 export default function Navbar() {
   const pathname = usePathname();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   return (
     <Box
@@ -100,19 +104,25 @@ export default function Navbar() {
         </Box>
 
         <Box>
-          <Link href="/">
-            <Box
-              px="15px"
-              py="15px"
-              _hover={{
-                backgroundColor: colors.gray.soft,
+          <Box
+            px="15px"
+            py="15px"
+            _hover={{
+              backgroundColor: colors.gray.soft,
+            }}
+          >
+            <TextIcon
+              color="gray.medium"
+              icon={IconsName.logout}
+              ml="10px"
+              onClick={() => {
+                dispatch(logout());
+                // router.push("/dashboard/auth/signin");
               }}
             >
-              <TextIcon color="gray.medium" icon={IconsName.logout} ml="10px">
-                Log Out
-              </TextIcon>
-            </Box>
-          </Link>
+              Log Out
+            </TextIcon>
+          </Box>
         </Box>
       </Box>
     </Box>

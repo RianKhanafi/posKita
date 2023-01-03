@@ -17,20 +17,66 @@ export default function DashboardPage() {
           </Box>
           <LineChart />
         </Box>
-        <Flex
-          color="white"
-          flexDirection="column"
-          width="25%"
-          borderLeftWidth="1px"
-        >
+        <Flex flexDirection="column" width="25%" borderLeftWidth="1px">
           <Box flex="1" width="100%" borderBottomWidth="1px">
-            a
+            <Text
+              fontSize="19px"
+              fontWeight="bold"
+              textAlign="center"
+              color="gray.medium"
+              paddingTop="24px"
+            >
+              Terjual
+            </Text>
+            <Text
+              fontSize="50px"
+              fontWeight="bold"
+              textAlign="center"
+              color="dark.medium"
+              paddingY="24px"
+            >
+              43
+            </Text>
+          </Box>
+          <Box flex="1" width="100%" borderBottomWidth="1px" boxShadow="xs">
+            <Text
+              fontSize="19px"
+              fontWeight="bold"
+              textAlign="center"
+              color="primary.hard"
+              paddingTop="24px"
+            >
+              Jumlah Produk
+            </Text>
+            <Text
+              fontSize="50px"
+              fontWeight="bold"
+              textAlign="center"
+              color="primary.hard"
+              paddingY="24px"
+            >
+              20
+            </Text>
           </Box>
           <Box flex="1" width="100%" borderBottomWidth="1px">
-            q
-          </Box>
-          <Box flex="1" width="100%" borderBottomWidth="1px">
-            a
+            <Text
+              fontSize="19px"
+              fontWeight="bold"
+              textAlign="center"
+              color="gray.medium"
+              paddingTop="24px"
+            >
+              Jumlah Pelanggan
+            </Text>
+            <Text
+              fontSize="50px"
+              fontWeight="bold"
+              textAlign="center"
+              color="dark.medium"
+              paddingY="24px"
+            >
+              1
+            </Text>
           </Box>
         </Flex>
       </Box>

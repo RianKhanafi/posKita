@@ -116,12 +116,12 @@ export default function LineChart({ width }: ILineChart) {
       show: true,
     },
     markers: {
-      size: 4,
+      size: [8, 5],
       colors: ["#FC5757", "#DFE0EB"],
       strokeColors: "#fff",
-      strokeWidth: 2,
+      strokeWidth: 3,
       hover: {
-        size: 7,
+        size: 9,
       },
     },
     colors: ["#FC5757", "#DFE0EB"],
@@ -131,11 +131,11 @@ export default function LineChart({ width }: ILineChart) {
   const series = [
     {
       name: "series-1",
-      data: [10, 20, 30, 50, 20, 30],
+      data: [10, 20, 22, 50, 20, 30],
     },
     {
       name: "series-1",
-      data: [20, 15, 10, 30, 15, 40],
+      data: [20, 17, 10, 30, 18, 40],
     },
   ];
   return <Chart options={options} series={series} type="line" width={width} />;
