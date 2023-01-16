@@ -18,37 +18,37 @@ const menus: menus[] = [
   {
     icon: IconsName.graph,
     name: "Dashboard",
-    route: "/dashboard",
+    route: "/app/dashboard",
   },
   {
     icon: IconsName.pie,
     name: "Transaction",
-    route: "/dashboard/transaction",
+    route: "/app/dashboard/transaction",
   },
   {
     icon: IconsName.box,
     name: "Product",
-    route: "/dashboard/product",
+    route: "/app/dashboard/product",
   },
   {
     icon: IconsName.box,
     name: "Kategori",
-    route: "/dashboard/category",
+    route: "/app/dashboard/category",
   },
   {
     icon: IconsName.box,
     name: "Pelanggan",
-    route: "/dashboard/customer",
+    route: "/app/dashboard/customer",
   },
   {
     icon: IconsName.bell,
     name: "Diskon",
-    route: "/dashboard/discount",
+    route: "/app/dashboard/discount",
   },
   {
     icon: IconsName.box,
     name: "Inventory",
-    route: "/Dashboard",
+    route: "/app/Dashboard",
   },
 ];
 export default function Navbar() {

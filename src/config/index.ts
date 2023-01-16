@@ -1,3 +1,3 @@
 export default {
-  baseURL: "https://afternoon-castle-59690.herokuapp.com",
+  baseURL: "https://api.buatan.id/api",
 };

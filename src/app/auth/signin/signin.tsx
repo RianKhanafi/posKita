@@ -8,14 +8,15 @@ import { useState } from "react";
 import { authForm, selectAuth } from "store/features/users";
 import { useSigninMutation } from "store/features/users/api";
 import { useAppSelector } from "store/hook";
+import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
   const [increment] = useSigninMutation();
   const state = useAppSelector(selectAuth);
 
   const [form, setForm] = useState<authForm>({
-    identifier: null,
-    password: null,
+    identifier: "kasirpos",
+    password: "TopSecretPassw0|)",
   });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {

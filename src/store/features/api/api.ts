@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
+import config from "config";
 import jsCookie from "js-cookie";
+
 // Create our baseQuery instance
 const baseQuery = fetchBaseQuery({
-  baseUrl: "https://api.buatan.id/api",
+  baseUrl: config.baseURL,
   prepareHeaders: (headers, { getState }) => {
     const userData = jsCookie.get("postkita");
 
