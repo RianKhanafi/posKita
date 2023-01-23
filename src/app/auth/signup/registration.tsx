@@ -5,9 +5,9 @@ import { Button, Text } from "components/atoms";
 import { FormInput } from "components/molecules";
 import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "store/hook";
-import { authForm, selectAuth } from "store/features/users";
+import { authForm, selectAuth } from "store/features/auth";
 import { useState } from "react";
-import { useSignupMutation } from "store/features/users/api";
+import { useSignupMutation } from "store/features/auth/api";
 
 export default function RegistrationPage() {
   const [increment] = useSignupMutation();

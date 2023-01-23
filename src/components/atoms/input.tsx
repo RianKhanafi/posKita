@@ -4,13 +4,18 @@ import {
   Button,
   Input as InputChakraUI,
   InputGroup,
+  InputLeftElement,
   InputProps,
   InputRightElement,
 } from "@chakra-ui/react";
+import Icons, { IconsName } from "assets/icons";
 import { useState } from "react";
 
 interface TInput extends InputProps {
   full?: boolean;
+  leftIcon?: IconsName;
+  rightIcon?: IconsName;
+  onFilter?: () => React.MouseEvent<HTMLDivElement, MouseEvent>;
 }
 
 function PasswordInput({
@@ -54,6 +59,9 @@ export default function Input({
   onChange,
   width,
   value,
+  leftIcon,
+  rightIcon,
+  onFilter,
   ...rest
 }: TInput) {
   if (rest.type === "password")
@@ -70,18 +78,73 @@ export default function Input({
         fontSize="16px"
       />
     );
+
+  if (rest.type === "search") {
+    return (
+      <InputGroup display="flex" alignItems="center">
+        <InputLeftElement
+          pointerEvents="none"
+          children={<Icons name={IconsName.search} />}
+          mt="3px"
+        />
+
+        <InputChakraUI
+          value={value}
+          placeholder={placeholder}
+          color="dark.medium"
+          borderColor="dark.ultrasoft"
+          onChange={onChange}
+          width={full ? "100%" : width ? width : "100%"}
+          {...rest}
+          height="48px"
+          borderRadius="8px"
+          fontSize="16px"
+        />
+
+        {rightIcon && (
+          <InputRightElement
+            cursor="pointer"
+            borderLeft="1px solid"
+            borderColor="dark.ultrasoft"
+            h="27px"
+            children={<Icons name={IconsName.filter} />}
+            mt="9px"
+            onClick={onFilter}
+          />
+        )}
+      </InputGroup>
+    );
+  }
   return (
-    <InputChakraUI
-      value={value}
-      placeholder={placeholder}
-      color="dark.medium"
-      borderColor="dark.ultrasoft"
-      onChange={onChange}
-      width={full ? "100%" : width ? width : "100%"}
-      {...rest}
-      height="48px"
-      borderRadius="8px"
-      fontSize="16px"
-    />
+    <InputGroup>
+      {leftIcon && (
+        <InputLeftElement
+          pointerEvents="none"
+          children={<Icons name={leftIcon} />}
+          mt="3px"
+        />
+      )}
+
+      <InputChakraUI
+        value={value}
+        placeholder={placeholder}
+        color="dark.medium"
+        borderColor="dark.ultrasoft"
+        onChange={onChange}
+        width={full ? "100%" : width ? width : "100%"}
+        {...rest}
+        height="48px"
+        borderRadius="8px"
+        fontSize="16px"
+      />
+
+      {rightIcon && (
+        <InputRightElement
+          pointerEvents="none"
+          children={<Icons name={rightIcon} />}
+          mt="3px"
+        />
+      )}
+    </InputGroup>
   );
 }

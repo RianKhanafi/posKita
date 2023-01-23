@@ -7,7 +7,7 @@ import {
 import { api } from "./features/api/api";
 
 import counterReducer from "./features/slice";
-import authState from "./features/users";
+import authState from "./features/auth";
 
 export function makeStore(
   options?: ConfigureStoreOptions["preloadedState"] | undefined

@@ -32,7 +32,12 @@ export default function Header() {
           </Box>
 
           <Box>
-            <Input placeholder="Cari produk" width={448} />
+            <Input
+              placeholder="Cari produk"
+              width={448}
+              type="search"
+              rightIcon={IconsName.filter}
+            />
           </Box>
 
           <Box width={540} display="flex">

@@ -7,6 +7,8 @@ import { Provider } from "react-redux";
 import store from "store";
 import React from "react";
 import { SessionProvider } from "next-auth/react";
+import Header from "components/organisme/header";
+import Navbar from "components/organisme/navbar";
 
 const theme = extendTheme({ colors });
 

@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { IUserAuth, IUserData } from "store/features/users";
+import { IUserAuth, IUserData } from "store/features/auth";
 import jwt_decode from "jwt-decode";
 
 const protectedRoutes = "/dashboard";
 const authRoutes = "/auth";
+const publicRoutes = ["/public/confirmation"];
 
 export function middleware(request: NextRequest) {
   const currentUser: string | undefined =
@@ -13,15 +14,19 @@ export function middleware(request: NextRequest) {
   let user: IUserAuth<IUserData> = currentUser ? JSON.parse(currentUser) : null;
 
   const decode: any = user ? jwt_decode(user.accessToken) : null;
-  const exp = user ? new Date(decode.exp).getMilliseconds() : null;
-  const now = new Date().getMilliseconds();
+  const exp = user ? decode.exp : null;
+  const isExp = exp ? Date.now() >= exp * 1000 : true;
 
-  const isExp = !exp || (exp && exp > now);
+  if (publicRoutes.includes(request.nextUrl.pathname)) {
+    return NextResponse.rewrite(
+      new URL(request.nextUrl.pathname?.toString(), request.url)
+    );
+  }
 
   // if protected route, but have'nt access -> redirect
   if (request.nextUrl.pathname.startsWith(protectedRoutes) && isExp) {
     request.cookies.delete("postkita");
-    return NextResponse.redirect(new URL("/auth/signin", request.url));
+    return NextResponse.redirect(new URL("/auth/signup", request.url));
   }
 
   // if auth route but have an access -> redirect

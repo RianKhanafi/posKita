@@ -1,23 +1,41 @@
-import { authForm } from ".";
+import { authForm, IUserData } from "../auth";
 import { api } from "../api/api";
 
+interface IResponse<T> {
+  status: string;
+  data: T;
+}
 export const postApi = api.injectEndpoints({
   endpoints: (build) => ({
-    signup: build.mutation<authForm, Partial<authForm>>({
+    addUser: build.mutation<authForm, Partial<authForm>>({
       query(body) {
         return {
-          url: "/auth/local/register",
+          url: "/users",
           method: "POST",
           body,
         };
       },
       invalidatesTags: ["Posts"],
     }),
-    signin: build.mutation<authForm, Partial<authForm>>({
+    getUser: build.query<IResponse<IUserData>, IUserData>({
+      query: (name) => "/users?page=1&pageSize=10",
+    }),
+    deleteUser: build.mutation<authForm, Partial<authForm>>({
       query(body) {
         return {
-          url: "/auth/local",
-          method: "POST",
+          url: "/users",
+          method: "DELETE",
+          body,
+        };
+      },
+
+      invalidatesTags: ["Posts"],
+    }),
+    updateUser: build.mutation<authForm, Partial<authForm>>({
+      query(body) {
+        return {
+          url: "/users",
+          method: "PUT",
           body,
         };
       },
@@ -26,4 +44,9 @@ export const postApi = api.injectEndpoints({
   }),
 });
 
-export const { useSigninMutation, useSignupMutation } = postApi;
+export const {
+  useAddUserMutation,
+  useGetUserQuery,
+  useUpdateUserMutation,
+  useDeleteUserMutation,
+} = postApi;

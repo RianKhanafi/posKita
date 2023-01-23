@@ -5,8 +5,8 @@ import { Button, Text } from "components/atoms";
 import { FormInput } from "components/molecules";
 import Link from "next/link";
 import { useState } from "react";
-import { authForm, selectAuth } from "store/features/users";
-import { useSigninMutation } from "store/features/users/api";
+import { authForm, selectAuth } from "store/features/auth";
+import { useSigninMutation } from "store/features/auth/api";
 import { useAppSelector } from "store/hook";
 import { signIn } from "next-auth/react";
 

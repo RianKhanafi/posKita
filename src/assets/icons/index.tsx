@@ -10,6 +10,10 @@ import PieSvg from "./pie";
 import LogoutSvg from "./logout";
 import ArrowLeft from "./arrowLeft";
 import TrashSvg from "./trash";
+import SvgSearch from "./search";
+import SvgFilter from "./filter";
+import SvgEmailConfirm from "./emailConfirm";
+import SvgProduct from "./allProduct";
 
 export enum IconsName {
   logo = "logo",
@@ -24,6 +28,11 @@ export enum IconsName {
   pie = "pie",
   arrowLeft = "arrowLeft",
   trash = "trash",
+  search = "search",
+  filter = "filter",
+  //
+  emailConfirm = "emailConfirm",
+  allCategories = "allCategories",
 }
 interface IconsComponent {
   name?: IconsName;
@@ -59,6 +68,16 @@ export default function Icons({ name, width, height, color }: IconsComponent) {
         return <ArrowLeft {...props} />;
       case IconsName.trash:
         return <TrashSvg {...props} />;
+      case IconsName.search:
+        return <SvgSearch {...props} />;
+      case IconsName.filter:
+        return <SvgFilter {...props} />;
+
+      case IconsName.emailConfirm:
+        return <SvgEmailConfirm {...props} />;
+
+      case IconsName.allCategories:
+        return <SvgProduct {...props} />;
       default:
         return null;
     }

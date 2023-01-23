@@ -5,7 +5,7 @@ import { IconsName } from "assets/icons";
 import { TextIcon } from "components/atoms";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { logout } from "store/features/users";
+import { logout } from "store/features/auth";
 import { useAppDispatch } from "store/hook";
 import { colors } from "theme/colors";
 
@@ -18,37 +18,42 @@ const menus: menus[] = [
   {
     icon: IconsName.graph,
     name: "Dashboard",
-    route: "/app/dashboard",
+    route: "/dashboard",
   },
   {
     icon: IconsName.pie,
     name: "Transaction",
-    route: "/app/dashboard/transaction",
+    route: "/dashboard/transaction",
   },
   {
     icon: IconsName.box,
     name: "Product",
-    route: "/app/dashboard/product",
+    route: "/dashboard/product",
   },
   {
     icon: IconsName.box,
     name: "Kategori",
-    route: "/app/dashboard/category",
+    route: "/dashboard/category",
   },
   {
     icon: IconsName.box,
     name: "Pelanggan",
-    route: "/app/dashboard/customer",
+    route: "/dashboard/customer",
   },
   {
     icon: IconsName.bell,
     name: "Diskon",
-    route: "/app/dashboard/discount",
+    route: "/dashboard/discount",
   },
   {
     icon: IconsName.box,
     name: "Inventory",
-    route: "/app/Dashboard",
+    route: "/Dashboard",
+  },
+  {
+    icon: IconsName.box,
+    name: "Inventory",
+    route: "/dashboard/users",
   },
 ];
 export default function Navbar() {

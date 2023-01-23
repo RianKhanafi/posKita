@@ -11,7 +11,7 @@ const baseQuery = fetchBaseQuery({
     const data = userData ? JSON.parse(userData) : null;
 
     if (data) {
-      headers.set("authentication", `Bearer ${data.accessToken}`);
+      headers.set("authorization", `Bearer ${data.accessToken}`);
     }
     return headers;
   },
