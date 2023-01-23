@@ -6,17 +6,14 @@ import "styles/globals.css";
 import { Provider } from "react-redux";
 import store from "store";
 import React from "react";
-import { SessionProvider } from "next-auth/react";
-import Header from "components/organisme/header";
-import Navbar from "components/organisme/navbar";
 
 const theme = extendTheme({ colors });
 
-interface IProps {
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
-  session: any;
-}
-export default function RootLayout({ children, session }: IProps) {
+}) {
   return (
     <html>
       <head>
@@ -24,13 +21,11 @@ export default function RootLayout({ children, session }: IProps) {
       </head>
 
       <body>
-        {/* <SessionProvider session={session}> */}
         <Provider store={store}>
           <ChakraProvider theme={theme}>
             <React.Fragment>{children}</React.Fragment>
           </ChakraProvider>
         </Provider>
-        {/* </SessionProvider> */}
       </body>
     </html>
   );

@@ -7,8 +7,6 @@ import Header from "components/organisme/header";
 import Navbar from "components/organisme/navbar";
 import React from "react";
 
-const theme = extendTheme({ colors });
-
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <React.Fragment>
@@ -25,11 +23,11 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-interface IProps {
+export default function RootLayout({
+  children,
+}: {
   children: React.ReactNode;
-  session: any;
-}
-export default function RootLayout({ children }: IProps) {
+}) {
   return (
     <html>
       <head>

@@ -1,5 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import Icons, { IconsName } from "assets/icons";
+import Image from "next/image";
+import ImageNasiGoreng from "assets/images/nasigoreng.png";
 import Text from "./text";
 
 interface ICategoriesCard {
@@ -23,9 +25,32 @@ export default function CategoriesCard({
       border={active ? "" : "1px solid"}
       borderColor={active ? "" : "dark.ultrasoft"}
       cursor="pointer"
+      // _hover={{
+      // boxShadow: "xl",
+      //   backgroundColor: "primary.soft",
+      //   border: "none",
+      //   ".chakra-text": {
+      //     color: "white",
+      //   },
+      // }}
+      _hover={{
+        border: "1px solid",
+        borderColor: "primary.hard",
+        boxShadow: "md",
+      }}
     >
       <Box width="80px" display="flex" justifyContent="center">
-        <Icons name={IconsName.allCategories} width={39} height={39} />
+        {active ? (
+          <Icons name={IconsName.allCategories} width={39} height={39} />
+        ) : (
+          <Image
+            src={ImageNasiGoreng}
+            alt="nasigoreng"
+            placeholder="blur"
+            height={52}
+            width={65}
+          />
+        )}
       </Box>
       <Box>
         <Text

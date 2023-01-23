@@ -120,7 +120,7 @@ const data: Cat[] = [
 export default function Productpage() {
   const router = useRouter();
   const [page, setPage] = useState<number>(1);
-  const { data: iniData, isLoading } = useGetUserQuery("a");
+  const { data: iniData, isLoading } = useGetUserQuery({ username: "rian" });
 
   console.log("iniData =>", iniData);
   return (

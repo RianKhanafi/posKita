@@ -1,7 +1,7 @@
 "use client";
 import { Box, Flex } from "@chakra-ui/react";
 import { LineChart, Text } from "components/atoms";
-import { parseJwt } from "store/features/api/api";
+// import { parseJwt } from "store/features/api/api";
 
 export default function DashboardPage() {
   return (

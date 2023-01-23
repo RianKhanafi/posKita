@@ -1,9 +1,10 @@
+"use client";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import { Button, Text } from "components/atoms";
 import Image from "next/image";
 import ImageNasiGoreng from "assets/images/nasigoreng.png";
 
-export default function Cart({ onOpen }: any) {
+export default function Cart({ setCartOpen }: any) {
   return (
     <Box
       position="fixed"
@@ -16,8 +17,7 @@ export default function Cart({ onOpen }: any) {
       justifyContent="space-between"
     >
       <Box px="38px" py="20px">
-        <button onClick={onOpen}>open</button>
-        <Box>
+        <Box ml="30px">
           <Text fontSize={20} fontWeight="bold" mb="20px">
             Order Details
           </Text>

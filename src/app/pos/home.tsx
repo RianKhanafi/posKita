@@ -43,65 +43,70 @@ export default function Home() {
       <Grid templateColumns="repeat(11, 1fr)" position="relative">
         {/* <Grid> */}
         <GridItem colSpan={cartOpen ? 8 : 11}>
-          <Box p="30px">
-            <Text fontSize="19px" fontWeight="semibold" marginBottom="11px">
-              Category
-            </Text>
-            <Box
-              display="flex"
-              overflowX="auto"
-              css={{
-                "&::-webkit-scrollbar": {
-                  display: "none",
-                },
-              }}
-            >
-              {Categories?.map((elm, i) => (
-                <Box key={i} mr="28px">
-                  <CategoriesCard
-                    active={i == 0}
-                    title={elm.title}
-                    subtitle={elm.subtitle}
-                  />
-                </Box>
-              ))}
+          <Box margin="auto">
+            <Box px="40px" py="30px">
+              <Text fontSize="19px" fontWeight="semibold" marginBottom="11px">
+                Category
+              </Text>
+              <Box
+                display="flex"
+                overflowX="auto"
+                css={{
+                  "&::-webkit-scrollbar": {
+                    display: "none",
+                  },
+                }}
+              >
+                {Categories?.map((elm, i) => (
+                  <Box key={i} mr="28px" py="20px">
+                    <CategoriesCard
+                      active={i == 0}
+                      title={elm.title}
+                      subtitle={elm.subtitle}
+                    />
+                  </Box>
+                ))}
+              </Box>
+              <Text
+                fontSize="19px"
+                fontWeight="semibold"
+                marginBottom="11px"
+                mt="29px"
+              >
+                All Product
+              </Text>
+              <Grid templateColumns="repeat(auto-fill,minmax(230px,1fr))">
+                {[...Array(12)].map((_, i) => (
+                  <Box key={i} mb="52px">
+                    <Card />
+                  </Box>
+                ))}
+              </Grid>
             </Box>
-            <Text
-              fontSize="19px"
-              fontWeight="semibold"
-              marginBottom="11px"
-              mt="29px"
-            >
-              All Product
-            </Text>
-            <Grid templateColumns="repeat(auto-fill,minmax(233px,1fr))">
-              {[...Array(12)].map((_, i) => (
-                <Box key={i} mb="52px">
-                  <Card />
-                </Box>
-              ))}
-            </Grid>
           </Box>
         </GridItem>
-        {cartOpen ? (
-          <GridItem colSpan={3}>
-            <Cart onOpen={() => setCartOpen(!cartOpen)} />
-          </GridItem>
-        ) : (
-          <Box
-            width="100px"
-            height="40px"
-            bg="primary.hard"
-            position="fixed"
-            right="0"
-            top="0"
-            cursor="pointer"
-            mt="100px"
-            onClick={() => setCartOpen(!cartOpen)}
-          >
-            <Text>Open Chart</Text>
+
+        <GridItem colSpan={cartOpen ? 3 : 0}>
+          {cartOpen ? <Cart onOpen={() => setCartOpen(!cartOpen)} /> : null}
+          <Box position="relative">
+            <Box
+              bg="primary.hard"
+              position="fixed"
+              {...(cartOpen ? { right: 348 } : { right: 0 })}
+              top="0"
+              cursor="pointer"
+              mt="100px"
+              onClick={() => setCartOpen(!cartOpen)}
+            >
+              <Box
+                p="10px"
+                transform={cartOpen ? "rotate(180deg)" : "rotate(0deg)"}
+              >
+                <Icons name={IconsName.open} color="white" />
+              </Box>
+            </Box>
           </Box>
-        )}
+        </GridItem>
       </Grid>
     </div>
   );

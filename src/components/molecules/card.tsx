@@ -11,6 +11,14 @@ export default function Card() {
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
+      cursor="pointer"
+      _hover={{
+        // boxShadow: "2xl",
+        p: "10px",
+        border: "1px solid",
+        borderColor: "primary.hard",
+        borderRadius: "10px",
+      }}
     >
       <Box height="188px" width="100%">
         <Image

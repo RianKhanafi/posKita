@@ -14,6 +14,8 @@ import SvgSearch from "./search";
 import SvgFilter from "./filter";
 import SvgEmailConfirm from "./emailConfirm";
 import SvgProduct from "./allProduct";
+import SvgOpen from "./open";
+import SvgClose from "./close";
 
 export enum IconsName {
   logo = "logo",
@@ -30,6 +32,8 @@ export enum IconsName {
   trash = "trash",
   search = "search",
   filter = "filter",
+  open = "open",
+  close = "close",
   //
   emailConfirm = "emailConfirm",
   allCategories = "allCategories",
@@ -72,10 +76,12 @@ export default function Icons({ name, width, height, color }: IconsComponent) {
         return <SvgSearch {...props} />;
       case IconsName.filter:
         return <SvgFilter {...props} />;
-
+      case IconsName.open:
+        return <SvgOpen {...props} />;
+      case IconsName.close:
+        return <SvgClose {...props} />;
       case IconsName.emailConfirm:
         return <SvgEmailConfirm {...props} />;
-
       case IconsName.allCategories:
         return <SvgProduct {...props} />;
       default:

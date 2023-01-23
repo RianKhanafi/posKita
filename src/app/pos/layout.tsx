@@ -4,10 +4,7 @@ import { colors } from "theme/colors";
 import { extendTheme } from "@chakra-ui/react";
 import "styles/globals.css";
 import Header from "components/organisme/header";
-import Navbar from "components/organisme/navbar";
 import React from "react";
-
-const theme = extendTheme({ colors });
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -28,7 +25,11 @@ interface IProps {
   children: React.ReactNode;
   session: any;
 }
-export default function RootLayout({ children }: IProps) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html>
       <head>
