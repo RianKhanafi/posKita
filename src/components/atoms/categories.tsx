@@ -16,9 +16,9 @@ export default function CategoriesCard({
 }: ICategoriesCard) {
   return (
     <Box
-      width="204px"
+      width={{ base: "142px", lg: "204px", xl: "204px" }}
       borderRadius="8px"
-      height="77px"
+      height={{ base: "64px", lg: "77px", xl: "77px" }}
       bg={active ? "primary.hard" : "white"}
       display="flex"
       alignItems="center"
@@ -39,30 +39,34 @@ export default function CategoriesCard({
         boxShadow: "md",
       }}
     >
-      <Box width="80px" display="flex" justifyContent="center">
+      <Box
+        width={{ base: "60px", lg: "80px", xl: "80px" }}
+        display="flex"
+        justifyContent="center"
+      >
         {active ? (
-          <Icons name={IconsName.allCategories} width={39} height={39} />
+          <Icons name={IconsName.allCategories} />
         ) : (
           <Image
             src={ImageNasiGoreng}
             alt="nasigoreng"
             placeholder="blur"
-            height={52}
-            width={65}
+            height={50}
+            width={50}
           />
         )}
       </Box>
       <Box>
         <Text
           fontWeight="500"
-          fontSize="13px"
+          fontSize={{ base: "12px", lg: "13px", xl: "13px" }}
           color={active ? "white" : "dark.hard"}
         >
           {title}
         </Text>
         <Text
           fontWeight="400"
-          fontSize="11px"
+          fontSize={{ base: "10px", lg: "11px", xl: "11px" }}
           color={active ? "white" : "dark.hard"}
         >
           {subtitle}

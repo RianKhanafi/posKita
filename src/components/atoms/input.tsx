@@ -81,12 +81,10 @@ export default function Input({
 
   if (rest.type === "search") {
     return (
-      <InputGroup display="flex" alignItems="center">
-        <InputLeftElement
-          pointerEvents="none"
-          children={<Icons name={IconsName.search} />}
-          mt="3px"
-        />
+      <InputGroup width="auto">
+        <InputLeftElement pointerEvents="none" mt="3px">
+          <Icons name={IconsName.search} />
+        </InputLeftElement>
 
         <InputChakraUI
           value={value}
@@ -107,10 +105,11 @@ export default function Input({
             borderLeft="1px solid"
             borderColor="dark.ultrasoft"
             h="27px"
-            children={<Icons name={IconsName.filter} />}
             mt="9px"
             onClick={onFilter}
-          />
+          >
+            <Icons name={IconsName.filter} />
+          </InputRightElement>
         )}
       </InputGroup>
     );
@@ -118,11 +117,9 @@ export default function Input({
   return (
     <InputGroup>
       {leftIcon && (
-        <InputLeftElement
-          pointerEvents="none"
-          children={<Icons name={leftIcon} />}
-          mt="3px"
-        />
+        <InputLeftElement pointerEvents="none" mt="3px">
+          <Icons name={leftIcon} />
+        </InputLeftElement>
       )}
 
       <InputChakraUI

@@ -17,7 +17,7 @@ export default function Header() {
         display="flex"
         justifyContent="space-between"
         alignItems="center"
-        px="37"
+        px={{ base: "15px", lg: "37px", xl: "37px" }}
         backgroundColor="white"
         zIndex="3"
       >
@@ -31,7 +31,7 @@ export default function Header() {
             <Icons name={IconsName.logo} />
           </Box>
 
-          <Box>
+          <Box display={{ base: "none", lg: "block", xl: "block" }}>
             <Input
               placeholder="Cari produk"
               width={448}
@@ -41,7 +41,11 @@ export default function Header() {
           </Box>
 
           <Box width={540} display="flex">
-            <Box width={437} display="flex" justifyContent="space-evenly">
+            <Box
+              width={{ base: "200px", lg: "437px", xl: "437px" }}
+              display="flex"
+              justifyContent="space-evenly"
+            >
               <Link href="/">
                 <Text
                   _hover={{ color: colors.primary.hard }}
@@ -49,7 +53,7 @@ export default function Header() {
                   fontSize="16px"
                   color="dark.medium"
                 >
-                  Menu
+                  Pos
                 </Text>
               </Link>
               <Link href="/">
@@ -70,15 +74,6 @@ export default function Header() {
                   color="dark.medium"
                 >
                   Stock
-                </Text>
-              </Link>
-              <Link href="/">
-                <Text
-                  _hover={{ color: colors.primary.hard }}
-                  fontWeight="medium"
-                  fontSize="16px"
-                >
-                  Accounting
                 </Text>
               </Link>
             </Box>

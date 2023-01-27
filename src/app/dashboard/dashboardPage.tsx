@@ -1,6 +1,6 @@
 "use client";
 import { Box, Flex } from "@chakra-ui/react";
-import { LineChart, Text } from "components/atoms";
+import { Text } from "components/atoms";
 // import { parseJwt } from "store/features/api/api";
 
 export default function DashboardPage() {
@@ -16,7 +16,7 @@ export default function DashboardPage() {
               as of 25 May 2019, 09:41 PM
             </Text>
           </Box>
-          <LineChart />
+          {/* <LineChart /> */}
         </Box>
         <Flex flexDirection="column" width="25%" borderLeftWidth="1px">
           <Box flex="1" width="100%" borderBottomWidth="1px">

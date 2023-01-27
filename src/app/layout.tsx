@@ -7,7 +7,15 @@ import { Provider } from "react-redux";
 import store from "store";
 import React from "react";
 
-const theme = extendTheme({ colors });
+const breakpoints = {
+  sm: "30em",
+  md: "48em",
+  lg: "62em",
+  xl: "80em",
+  "2xl": "96em",
+};
+
+const theme = extendTheme({ colors, breakpoints });
 
 export default function RootLayout({
   children,

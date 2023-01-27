@@ -1,7 +1,7 @@
 "use client";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
 import Icons, { IconsName } from "assets/icons";
-import { Button, Text } from "components/atoms";
+import { Button, Input, Text } from "components/atoms";
 import CategoriesCard from "components/atoms/categories";
 import Card from "components/molecules/card";
 import Image from "next/image";
@@ -36,15 +36,16 @@ const Categories: { title: string; subtitle: string }[] = [
 ];
 
 export default function Home() {
-  const [cartOpen, setCartOpen] = useState(true);
+  const [cartOpen, setCartOpen] = useState<boolean>(false);
 
+  // fontSize={{ base: '24px', md: '40px', lg: '56px' }}
   return (
-    <div>
+    <Box position="relative">
       <Grid templateColumns="repeat(11, 1fr)" position="relative">
         {/* <Grid> */}
         <GridItem colSpan={cartOpen ? 8 : 11}>
           <Box margin="auto">
-            <Box px="40px" py="30px">
+            <Box px={{ base: "15px", lg: "37px", xl: "37px" }} py="30px">
               <Text fontSize="19px" fontWeight="semibold" marginBottom="11px">
                 Category
               </Text>
@@ -75,7 +76,21 @@ export default function Home() {
               >
                 All Product
               </Text>
-              <Grid templateColumns="repeat(auto-fill,minmax(230px,1fr))">
+              <Input
+                placeholder="Cari produk"
+                full
+                display={{ base: "block", lg: "none", xl: "none" }}
+                type="search"
+                rightIcon={IconsName.filter}
+                mb="24px"
+              />
+              <Grid
+                templateColumns={{
+                  base: "repeat(auto-fill,minmax(118px,1fr))",
+                  lg: "repeat(auto-fill,minmax(230px,1fr))",
+                  xl: "repeat(auto-fill,minmax(230px,1fr))",
+                }}
+              >
                 {[...Array(12)].map((_, i) => (
                   <Box key={i} mb="52px">
                     <Card />
@@ -87,27 +102,9 @@ export default function Home() {
         </GridItem>
 
         <GridItem colSpan={cartOpen ? 3 : 0}>
-          {cartOpen ? <Cart onOpen={() => setCartOpen(!cartOpen)} /> : null}
-          <Box position="relative">
-            <Box
-              bg="primary.hard"
-              position="fixed"
-              {...(cartOpen ? { right: 348 } : { right: 0 })}
-              top="0"
-              cursor="pointer"
-              mt="100px"
-              onClick={() => setCartOpen(!cartOpen)}
-            >
-              <Box
-                p="10px"
-                transform={cartOpen ? "rotate(180deg)" : "rotate(0deg)"}
-              >
-                <Icons name={IconsName.open} color="white" />
-              </Box>
-            </Box>
-          </Box>
+          <Cart onOpen={() => setCartOpen(!cartOpen)} cartOpen={cartOpen} />
         </GridItem>
       </Grid>
-    </div>
+    </Box>
   );
 }

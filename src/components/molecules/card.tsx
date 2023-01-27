@@ -6,8 +6,9 @@ import { Text } from "components/atoms";
 export default function Card() {
   return (
     <Box
-      width="233px"
-      height="307px"
+      // width=""
+      width={{ base: "110px", lg: "233px", xl: "233px" }}
+      height={{ base: "162px", lg: "307px", xl: "307px" }}
       display="flex"
       flexDirection="column"
       justifyContent="space-between"
@@ -18,6 +19,7 @@ export default function Card() {
         border: "1px solid",
         borderColor: "primary.hard",
         borderRadius: "10px",
+        height: "180px",
       }}
     >
       <Box height="188px" width="100%">
@@ -29,13 +31,20 @@ export default function Card() {
         />
       </Box>
       <Box>
-        <Text fontSize="16px">
+        <Text
+          fontSize={{ base: "12px", lg: "16px", xl: "16px" }}
+          fontWeight={{ base: "light" }}
+        >
           Nasi Goreng Gila, Paket Lengkap dengan pete.
         </Text>
       </Box>
       <Box display="flex" justifyContent="space-between">
         <Box>
-          <Text fontSize="22px" fontWeight="semibold">
+          <Text
+            fontSize={{ base: "14px", lg: "22px", xl: "22px" }}
+            fontWeight="semibold"
+            mt={{ base: "3px" }}
+          >
             Rp. 18.000
           </Text>
         </Box>
@@ -50,6 +59,7 @@ export default function Card() {
             textAlign="center"
             py="3px"
             borderRadius="4px"
+            display={{ base: "none" }}
           >
             Buy
           </Badge>
