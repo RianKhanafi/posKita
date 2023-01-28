@@ -46,6 +46,7 @@ export default function Home() {
         <GridItem colSpan={cartOpen ? 8 : 11}>
           <Box margin="auto">
             <Box
+              mt={{ base: "10px", lg: "0", xl: "0" }}
               px={{ base: "15px", lg: "37px", xl: "37px" }}
               py={{ base: "0", lg: "30px", xl: "30px" }}
             >
@@ -78,23 +79,25 @@ export default function Home() {
                 ))}
               </Box>
               <Text
-                fontSize="16px"
+                fontSize={{ base: "16px", lg: "19px", xl: "19px" }}
                 fontWeight="semibold"
                 marginBottom="13px"
                 mt={{ base: "15px" }}
                 className={openSans.className}
                 color="#000339"
+                mb={{ base: "15px", lg: "25px", xl: "25px" }}
               >
                 Daftar Produk
               </Text>
-              <Input
-                placeholder="Cari produk"
-                full
-                display={{ base: "block", lg: "none", xl: "none" }}
-                type="search"
-                rightIcon={IconsName.filter}
-                mb="24px"
-              />
+              <Box display={{ base: "block", lg: "none", xl: "none" }}>
+                <Input
+                  placeholder="Cari produk"
+                  full
+                  type="search"
+                  rightIcon={IconsName.filter}
+                  mb="24px"
+                />
+              </Box>
               <Text
                 fontSize="16px"
                 fontWeight="semibold"

@@ -5,62 +5,18 @@ import Image from "next/image";
 import ImageNasiGoreng from "assets/images/nasigoreng.png";
 import React from "react";
 import Icons, { IconsName } from "assets/icons";
+import Card from "components/molecules/card";
+import { notoSans, openSans } from "theme/font";
 
 const CartProduct = () => {
   return (
-    <Box>
+    <div>
       {[...Array(5)].map((_, i) => (
-        <Grid
-          key={i}
-          templateColumns="repeat(4, 1fr)"
-          borderBottom="1px solid"
-          borderColor="dark.ultrasoft"
-          marginBottom="15px"
-        >
-          <GridItem colSpan={1}>
-            <Image
-              src={ImageNasiGoreng}
-              alt="nasigoreng"
-              placeholder="blur"
-              width={65}
-              height={65}
-            />
-          </GridItem>
-          <GridItem colSpan={2}>
-            <Text fontSize="12px" px="9px">
-              Nasi Goreng Gila, Paket Lengkap dengan pete dan kawanya.
-            </Text>
-          </GridItem>
-          <GridItem
-            colSpan={1}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Text fontSize="13px" fontWeight="semibold">
-              Rp. 3000
-            </Text>
-          </GridItem>
-
-          <GridItem colSpan={1}></GridItem>
-          <GridItem colSpan={2}>
-            <Text fontSize="16px" px="9px" my="10px">
-              2x
-            </Text>
-          </GridItem>
-          <GridItem
-            colSpan={1}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-          >
-            <Text fontSize="16px" fontWeight="semibold" my="10px">
-              Rp. 3000
-            </Text>
-          </GridItem>
-        </Grid>
+        <Box key={i} mb={{ base: "10px", lg: "20px", xl: "20px" }}>
+          <Card isResponsive={false} />
+        </Box>
       ))}
-    </Box>
+    </div>
   );
 };
 
@@ -74,7 +30,12 @@ const CartAccum = () => {
       >
         <GridItem colSpan={3}>
           <Box width="73px" height="23px" bg="purple" my="30px">
-            <Text textAlign="center" fontSize="10px" color="white">
+            <Text
+              textAlign="center"
+              fontSize="10px"
+              color="white"
+              className={openSans.className}
+            >
               20% Diskon
             </Text>
           </Box>
@@ -83,11 +44,22 @@ const CartAccum = () => {
           colSpan={1}
           display="flex"
           alignItems="center"
-          justifyContent="center"
+          justifyContent="flex-end"
         >
-          <Text fontSize="16px" fontWeight="semibold" my="10px">
-            Rp. 3000
-          </Text>
+          <Box>
+            <Text
+              fontSize={{ base: "15px", lg: "22px", xl: "22px" }}
+              fontWeight="semibold"
+              color="#809C79"
+              className={notoSans.className}
+              display="flex"
+            >
+              <Text fontSize={{ base: "8px", lg: "12px", xl: "12px" }}>
+                Rp.
+              </Text>
+              <Text> 18.000</Text>
+            </Text>
+          </Box>
         </GridItem>
       </Grid>
 
@@ -97,19 +69,30 @@ const CartAccum = () => {
         borderColor="dark.ultrasoft"
       >
         <GridItem colSpan={2}>
-          <Text fontSize="20px" fontWeight="semibold" my="10px">
+          <Text
+            fontSize="18px"
+            fontWeight="semibold"
+            my="10px"
+            className={openSans.className}
+          >
             Total
           </Text>
         </GridItem>
         <GridItem colSpan={2}>
-          <Text
-            fontSize="20px"
-            fontWeight="semibold"
-            my="10px"
-            textAlign="right"
-          >
-            Rp. 36.600
-          </Text>
+          <Box my="10px" display="flex" justifyContent="flex-end">
+            <Text
+              fontSize={{ base: "15px", lg: "22px", xl: "22px" }}
+              fontWeight="semibold"
+              color="#809C79"
+              className={notoSans.className}
+              display="flex"
+            >
+              <Text fontSize={{ base: "18px", lg: "12px", xl: "12px" }}>
+                Rp.
+              </Text>
+              <Text> 18.000</Text>
+            </Text>
+          </Box>
         </GridItem>
       </Grid>
     </Box>
@@ -122,19 +105,12 @@ export default function Cart({ cartOpen, onOpen }: any) {
         <Box
           bg="primary.hard"
           position="fixed"
-          {...(cartOpen ? { right: 348 } : { right: 5 })}
-          bottom="10"
+          {...(cartOpen ? { right: 348, top: -20 } : { right: 5, bottom: 5 })}
           cursor="pointer"
           mt="100px"
           onClick={onOpen}
           zIndex="11"
         >
-          {/* <Box
-            p="10px"
-            transform={cartOpen ? "rotate(180deg)" : "rotate(0deg)"}
-          >
-            <Icons name={IconsName.open} color="white" />
-          </Box> */}
           <ButtonIcon
             typeButton="primary"
             rightIcon={<Icons name={IconsName.open} color="white" />}
@@ -145,7 +121,7 @@ export default function Cart({ cartOpen, onOpen }: any) {
       </Box>
       {cartOpen ? (
         <Box
-          position={{ base: "absolute", lg: "fixed", xl: "fixed" }}
+          position={{ base: "fixed", lg: "fixed", xl: "fixed" }}
           left={{ base: 0, lg: "unset", xl: "unset" }}
           right={{ base: 0, lg: "unset", xl: "unset" }}
           top={{ base: 0, lg: "unset", xl: "unset" }}
@@ -177,7 +153,7 @@ export default function Cart({ cartOpen, onOpen }: any) {
                 </Text>
               </Box>
             </Box>
-            <Box px="38px" pb="20px" h="75vh" overflow="auto">
+            <Box px="15px" pb="20px">
               <Box mt="70px">
                 {/* <Box width="100%" display="flex">
             <Box width="80px" bg="red" height="80px"></Box>
