@@ -16,6 +16,7 @@ import SvgEmailConfirm from "./emailConfirm";
 import SvgProduct from "./allProduct";
 import SvgOpen from "./open";
 import SvgClose from "./close";
+import MinusSVG from "./menus";
 
 export enum IconsName {
   logo = "logo",
@@ -34,6 +35,7 @@ export enum IconsName {
   filter = "filter",
   open = "open",
   close = "close",
+  minus = "minus",
   //
   emailConfirm = "emailConfirm",
   allCategories = "allCategories",
@@ -84,6 +86,9 @@ export default function Icons({ name, width, height, color }: IconsComponent) {
         return <SvgEmailConfirm {...props} />;
       case IconsName.allCategories:
         return <SvgProduct {...props} />;
+
+      case IconsName.minus:
+        return <MinusSVG {...props} />;
       default:
         return null;
     }

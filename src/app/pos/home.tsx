@@ -1,11 +1,11 @@
 "use client";
-import { Box, Grid, GridItem } from "@chakra-ui/react";
+import { Box, Divider, Grid, GridItem } from "@chakra-ui/react";
 import Icons, { IconsName } from "assets/icons";
 import { Button, Input, Text } from "components/atoms";
 import CategoriesCard from "components/atoms/categories";
 import Card from "components/molecules/card";
-import Image from "next/image";
 import { useState } from "react";
+import { openSans } from "theme/font";
 import Cart from "./cart";
 
 const Categories: { title: string; subtitle: string }[] = [
@@ -45,8 +45,17 @@ export default function Home() {
         {/* <Grid> */}
         <GridItem colSpan={cartOpen ? 8 : 11}>
           <Box margin="auto">
-            <Box px={{ base: "15px", lg: "37px", xl: "37px" }} py="30px">
-              <Text fontSize="19px" fontWeight="semibold" marginBottom="11px">
+            <Box
+              px={{ base: "15px", lg: "37px", xl: "37px" }}
+              py={{ base: "0", lg: "30px", xl: "30px" }}
+            >
+              <Text
+                fontSize="19px"
+                fontWeight="semibold"
+                marginBottom="11px"
+                display={{ base: "none", lg: "block", xl: "block" }}
+                className={openSans.className}
+              >
                 Category
               </Text>
               <Box
@@ -69,12 +78,14 @@ export default function Home() {
                 ))}
               </Box>
               <Text
-                fontSize="19px"
+                fontSize="16px"
                 fontWeight="semibold"
-                marginBottom="11px"
-                mt="29px"
+                marginBottom="13px"
+                mt={{ base: "15px" }}
+                className={openSans.className}
+                color="#000339"
               >
-                All Product
+                Daftar Produk
               </Text>
               <Input
                 placeholder="Cari produk"
@@ -84,15 +95,25 @@ export default function Home() {
                 rightIcon={IconsName.filter}
                 mb="24px"
               />
+              <Text
+                fontSize="16px"
+                fontWeight="semibold"
+                marginBottom="13px"
+                className={openSans.className}
+                color="#000339"
+              >
+                Nasi Goreng
+              </Text>
+              <Divider mt="3px" mb="22px" />
               <Grid
                 templateColumns={{
-                  base: "repeat(auto-fill,minmax(118px,1fr))",
+                  base: "repeat(auto-fill,minmax(100%,1fr))",
                   lg: "repeat(auto-fill,minmax(230px,1fr))",
                   xl: "repeat(auto-fill,minmax(230px,1fr))",
                 }}
               >
                 {[...Array(12)].map((_, i) => (
-                  <Box key={i} mb="52px">
+                  <Box key={i} mb={{ base: "19px", lg: "52px", xl: "52px" }}>
                     <Card />
                   </Box>
                 ))}

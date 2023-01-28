@@ -3,6 +3,7 @@ import Icons, { IconsName } from "assets/icons";
 import Image from "next/image";
 import ImageNasiGoreng from "assets/images/nasigoreng.png";
 import Text from "./text";
+import { openSans } from "theme/font";
 
 interface ICategoriesCard {
   active?: boolean;
@@ -19,11 +20,9 @@ export default function CategoriesCard({
       width={{ base: "142px", lg: "204px", xl: "204px" }}
       borderRadius="8px"
       height={{ base: "64px", lg: "77px", xl: "77px" }}
-      bg={active ? "primary.hard" : "white"}
+      bg={active ? "primary.hard" : "#F6F6F6"}
       display="flex"
       alignItems="center"
-      border={active ? "" : "1px solid"}
-      borderColor={active ? "" : "dark.ultrasoft"}
       cursor="pointer"
       // _hover={{
       // boxShadow: "xl",
@@ -61,13 +60,15 @@ export default function CategoriesCard({
           fontWeight="500"
           fontSize={{ base: "12px", lg: "13px", xl: "13px" }}
           color={active ? "white" : "dark.hard"}
+          className={openSans.className}
         >
           {title}
         </Text>
         <Text
           fontWeight="400"
-          fontSize={{ base: "10px", lg: "11px", xl: "11px" }}
-          color={active ? "white" : "dark.hard"}
+          fontSize={{ base: "9px", lg: "11px", xl: "11px" }}
+          color={active ? "white" : "gray.medium"}
+          className={openSans.className}
         >
           {subtitle}
         </Text>

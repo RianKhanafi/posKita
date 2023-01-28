@@ -1,6 +1,6 @@
 "use client";
 import { Box, Grid, GridItem } from "@chakra-ui/react";
-import { Button, Text } from "components/atoms";
+import { Button, ButtonIcon, Text } from "components/atoms";
 import Image from "next/image";
 import ImageNasiGoreng from "assets/images/nasigoreng.png";
 import React from "react";
@@ -122,19 +122,25 @@ export default function Cart({ cartOpen, onOpen }: any) {
         <Box
           bg="primary.hard"
           position="fixed"
-          {...(cartOpen ? { right: 348 } : { right: 0 })}
-          top="0"
+          {...(cartOpen ? { right: 348 } : { right: 5 })}
+          bottom="10"
           cursor="pointer"
           mt="100px"
           onClick={onOpen}
           zIndex="11"
         >
-          <Box
+          {/* <Box
             p="10px"
             transform={cartOpen ? "rotate(180deg)" : "rotate(0deg)"}
           >
             <Icons name={IconsName.open} color="white" />
-          </Box>
+          </Box> */}
+          <ButtonIcon
+            typeButton="primary"
+            rightIcon={<Icons name={IconsName.open} color="white" />}
+          >
+            3 Items
+          </ButtonIcon>
         </Box>
       </Box>
       {cartOpen ? (

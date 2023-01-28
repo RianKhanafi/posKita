@@ -4,6 +4,7 @@ import classNames from "classnames";
 import Icons, { IconsName } from "assets/icons";
 import { colors } from "theme/colors";
 import React from "react";
+import { openSans } from "theme/font";
 
 type TTYpe = "primary" | "secondary" | "none";
 
@@ -47,6 +48,7 @@ export default function ButtonIcon({
       fontSize={16}
       width={full ? "100%" : "auto"}
       onClick={onClick}
+      className={openSans.className}
       _hover={{
         backgroundColor:
           typeButton === "primary" ? colors.primary.soft : colors.gray.soft,
