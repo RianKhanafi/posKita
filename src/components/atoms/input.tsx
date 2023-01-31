@@ -10,6 +10,8 @@ import {
 } from "@chakra-ui/react";
 import Icons, { IconsName } from "assets/icons";
 import { useState } from "react";
+import { colors } from "theme/colors";
+import { openSans } from "theme/font";
 
 interface TInput extends InputProps {
   full?: boolean;
@@ -39,13 +41,19 @@ function PasswordInput({
         value={value}
         placeholder={placeholder}
         color="dark.medium"
-        borderColor="dark.ultrasoft"
+        borderColor="gray.hard"
         height="48px"
         borderRadius="8px"
         fontSize="16px"
+        className={openSans.className}
       />
       <InputRightElement width="4.5rem" mt="3px" mr="2px">
-        <Button h="1.75rem" size="sm" onClick={handleClick}>
+        <Button
+          h="1.75rem"
+          size="sm"
+          onClick={handleClick}
+          className={openSans.className}
+        >
           {show ? "Hide" : "Show"}
         </Button>
       </InputRightElement>
@@ -71,11 +79,16 @@ export default function Input({
         value={value}
         placeholder={placeholder}
         color="dark.medium"
-        borderColor="dark.ultrasoft"
+        borderColor="gray.hard"
         {...rest}
         height="48px"
         borderRadius="8px"
         fontSize="16px"
+        css={{
+          "::placeholder": {
+            color: "gray.soft",
+          },
+        }}
       />
     );
 
@@ -83,14 +96,14 @@ export default function Input({
     return (
       <InputGroup width="auto">
         <InputLeftElement pointerEvents="none" mt="3px">
-          <Icons name={IconsName.search} />
+          <Icons name={IconsName.search} color={colors.gray.hard} />
         </InputLeftElement>
 
         <InputChakraUI
           value={value}
           placeholder={placeholder}
           color="dark.medium"
-          borderColor="dark.ultrasoft"
+          borderColor="gray.hard"
           onChange={onChange}
           width={full ? "100%" : width ? width : "100%"}
           {...rest}
@@ -103,7 +116,7 @@ export default function Input({
           <InputRightElement
             cursor="pointer"
             borderLeft="1px solid"
-            borderColor="dark.ultrasoft"
+            borderColor="gray.hard"
             h="27px"
             mt="9px"
             onClick={onFilter}
@@ -126,7 +139,7 @@ export default function Input({
         value={value}
         placeholder={placeholder}
         color="dark.medium"
-        borderColor="dark.ultrasoft"
+        borderColor="gray.hard"
         onChange={onChange}
         width={full ? "100%" : width ? width : "100%"}
         {...rest}

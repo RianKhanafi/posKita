@@ -4,6 +4,7 @@ import Image from "next/image";
 import ImageNasiGoreng from "assets/images/nasigoreng.png";
 import Text from "./text";
 import { openSans } from "theme/font";
+import { colors } from "theme/colors";
 
 interface ICategoriesCard {
   active?: boolean;
@@ -17,25 +18,23 @@ export default function CategoriesCard({
 }: ICategoriesCard) {
   return (
     <Box
-      width={{ base: "142px", lg: "204px", xl: "204px" }}
+      width={{
+        ...(active
+          ? { base: "142px", lg: "204px", xl: "204px" }
+          : { base: "81px", lg: "81px", xl: "81px" }),
+      }}
       borderRadius="8px"
       height={{ base: "64px", lg: "77px", xl: "77px" }}
       bg={active ? "primary.hard" : "#F6F6F6"}
       display="flex"
+      flexDirection={active ? "row" : "column"}
       alignItems="center"
+      justifyContent={active ? "flex-start" : "center"}
       cursor="pointer"
-      // _hover={{
-      // boxShadow: "xl",
-      //   backgroundColor: "primary.soft",
-      //   border: "none",
-      //   ".chakra-text": {
-      //     color: "white",
-      //   },
-      // }}
       _hover={{
         border: "1px solid",
         borderColor: "primary.hard",
-        boxShadow: "md",
+        // boxShadow: "md",
       }}
     >
       <Box
@@ -43,22 +42,17 @@ export default function CategoriesCard({
         display="flex"
         justifyContent="center"
       >
-        {active ? (
-          <Icons name={IconsName.allCategories} />
-        ) : (
-          <Image
-            src={ImageNasiGoreng}
-            alt="nasigoreng"
-            placeholder="blur"
-            height={50}
-            width={50}
-          />
-        )}
+        <Icons
+          name={IconsName.allCategories}
+          color={active ? "white" : colors.dark.hard}
+          width={active ? 39 : 20}
+          height={active ? 39 : 20}
+        />
       </Box>
       <Box>
         <Text
           fontWeight="500"
-          fontSize={{ base: "12px", lg: "13px", xl: "13px" }}
+          fontSize={{ base: "12px", lg: "14px", xl: "14px" }}
           color={active ? "white" : "dark.hard"}
           className={openSans.className}
         >
@@ -66,7 +60,7 @@ export default function CategoriesCard({
         </Text>
         <Text
           fontWeight="400"
-          fontSize={{ base: "9px", lg: "11px", xl: "11px" }}
+          fontSize={{ base: "9px", lg: "10.5px", xl: "10.5px" }}
           color={active ? "white" : "gray.medium"}
           className={openSans.className}
         >

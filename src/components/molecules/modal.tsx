@@ -17,7 +17,7 @@ export interface IOpenModal {
   openModal: boolean;
 }
 
-interface IModal extends IOpenModal {
+export interface IModal extends IOpenModal {
   title?: string;
   primaryTitle?: string;
   secondaryTitle?: string;
@@ -40,12 +40,12 @@ export default function Modal({
   const finalRef = React.useRef(null);
 
   useEffect(() => {
-    console.log("openModal =>", openModal);
     if (openModal) onOpen();
   }, [openModal]);
 
   return (
     <ModalChakraUI
+      isCentered
       finalFocusRef={finalRef}
       isOpen={isOpen}
       onClose={() => {

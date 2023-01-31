@@ -6,6 +6,7 @@ import "styles/globals.css";
 import { Provider } from "react-redux";
 import store from "store";
 import React from "react";
+import { openSans } from "theme/font";
 
 const breakpoints = {
   sm: "30em",
@@ -15,7 +16,7 @@ const breakpoints = {
   "2xl": "96em",
 };
 
-const theme = extendTheme({ colors, breakpoints });
+export const theme = extendTheme({ colors, breakpoints });
 
 export default function RootLayout({
   children,
@@ -28,7 +29,7 @@ export default function RootLayout({
         <title>POSKita</title>
       </head>
 
-      <body>
+      <body className={openSans.className}>
         <Provider store={store}>
           <ChakraProvider theme={theme}>
             <React.Fragment>{children}</React.Fragment>

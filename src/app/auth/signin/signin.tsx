@@ -36,7 +36,12 @@ export default function LoginPage() {
       justifyContent="center"
       alignItems="center"
     >
-      <Box width="auto" height="auto" px="90" py="122">
+      <Box
+        width="auto"
+        height="auto"
+        px={{ base: "30px", lg: "90px", xl: "90px" }}
+        py={{ base: "30px", lg: "122px", xl: "122px" }}
+      >
         <Box display="flex" justifyContent="center">
           <Icons name={IconsName.logo} width={302.52} height={48} />
         </Box>
@@ -47,7 +52,7 @@ export default function LoginPage() {
             inputType="input"
             placeholder="Masukan Username/Email"
             name="identifier"
-            width={564}
+            width={{ base: "100%", lg: 564, xl: 564 }}
             onChange={onChange}
           />
 
@@ -58,7 +63,7 @@ export default function LoginPage() {
               placeholder="Masukan Password"
               type="password"
               name="password"
-              width={564}
+              width={{ base: "100%", lg: 564, xl: 564 }}
               onChange={onChange}
             />
           </Box>

@@ -1,11 +1,29 @@
 "use client";
-import { Badge, Box, Image } from "@chakra-ui/react";
+import { Badge, Box, Divider, Image } from "@chakra-ui/react";
+import { theme } from "app/layout";
 import Icons, { IconsName } from "assets/icons";
-import { Input, Text } from "components/atoms";
+import { Input, Text, TextIcon } from "components/atoms";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useRef } from "react";
 import { colors } from "theme/colors";
 
 export default function Header() {
+  const menuRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
+
+  useEffect(() => {
+    if (menuRef.current) menuRef.current.classList.remove("openmenu");
+  }, [pathname]);
+
+  const onOpenMenu = () => {
+    if (menuRef.current) menuRef.current.classList.add("openmenu");
+  };
+
+  const onCloseMenu = () => {
+    if (menuRef.current) menuRef.current.classList.remove("openmenu");
+  };
+
   return (
     <nav>
       <Box
@@ -13,7 +31,7 @@ export default function Header() {
         height="70px"
         width="100%"
         borderBottom="1px"
-        borderColor="#DFE0EB"
+        borderColor="gray.hard"
         display="flex"
         justifyContent="space-between"
         alignItems="center"
@@ -40,46 +58,201 @@ export default function Header() {
             />
           </Box>
 
-          <Box width={540} display="flex">
+          <Box
+            css={{
+              ".openmenu": {
+                display: "block",
+              },
+            }}
+          >
             <Box
-              width={{ base: "200px", lg: "437px", xl: "437px" }}
-              display="flex"
-              justifyContent="space-evenly"
+              display={{ base: "none", md: "block", lg: "block", xl: "block" }}
+              ref={menuRef}
             >
-              <Link href="/">
-                <Text
-                  _hover={{ color: colors.primary.hard }}
-                  fontWeight="medium"
-                  fontSize="16px"
-                  color="dark.medium"
-                >
-                  Pos
-                </Text>
-              </Link>
-              <Link href="/">
-                <Text
-                  _hover={{ color: colors.primary.hard }}
-                  fontWeight="medium"
-                  fontSize="16px"
-                  color="dark.medium"
-                >
-                  Admin
-                </Text>
-              </Link>
-              <Link href="/">
-                <Text
-                  _hover={{ color: colors.primary.hard }}
-                  fontWeight="medium"
-                  fontSize="16px"
-                  color="dark.medium"
-                >
-                  Stock
-                </Text>
-              </Link>
+              <Box
+                width={{ base: "100%", md: 540, lg: 540, xl: 540 }}
+                height={{
+                  base: "100vh",
+                  md: "100vh",
+                  xl: "initial",
+                  lg: "initial",
+                }}
+                display="flex"
+                position={{
+                  base: "fixed",
+                  md: "relative",
+                  lg: "relative",
+                  xl: "relative",
+                }}
+                left={{ base: 0, md: "unset", lg: "unset", xl: "unset" }}
+                right={{ base: 0, md: "unset", lg: "unset", xl: "unset" }}
+                top={{ base: 0, md: "unset", lg: "unset", xl: "unset" }}
+                bottom={{ base: 0, md: "unset", lg: "unset", xl: "unset" }}
+                backgroundColor="white"
+                overflow={{
+                  base: "hidden",
+                  md: "initial",
+                  lg: "initial",
+                  xl: "initial",
+                }}
+                zIndex="15"
+              >
+                <Box width="100%">
+                  <Box
+                    p="20px"
+                    display={{
+                      base: "block",
+                      md: "none",
+                      lg: "none",
+                      xl: "mone",
+                    }}
+                  >
+                    <Box display="flex" justifyContent="space-between">
+                      <Box>
+                        <Icons name={IconsName.logo} />
+                      </Box>
+                      <Box onClick={onCloseMenu}>
+                        <Icons
+                          name={IconsName.chevronRight}
+                          color={colors.primary.hard}
+                        />
+                      </Box>
+                    </Box>
+                  </Box>
+                  <Box
+                    width={{ base: "100%", lg: "437px", xl: "437px" }}
+                    display="flex"
+                    flexDirection={{
+                      base: "column",
+                      md: "row",
+                      lg: "row",
+                      xl: "row",
+                    }}
+                    justifyContent={{
+                      base: "initial",
+                      md: "space-evenly",
+                      lg: "space-evenly",
+                      xl: "space-evenly",
+                    }}
+                    p={{ base: "20px", md: "unset", lg: "unset", xl: "unset" }}
+                  >
+                    <Link href="/pos">
+                      <TextIcon
+                        _hover={{ color: colors.primary.hard }}
+                        fontWeight="medium"
+                        fontSize="16px"
+                        py="12px"
+                        icon={IconsName.home}
+                        {...(pathname === "/pos" && {
+                          colorIcon: colors.primary.hard,
+                        })}
+                        color={
+                          pathname === "/pos" ? "primary.hard" : "dark.hard"
+                        }
+                        colorIcon={
+                          pathname === "/pos"
+                            ? colors.primary.hard
+                            : colors.dark.hard
+                        }
+                      >
+                        Pos
+                      </TextIcon>
+                    </Link>
+                    <Link href="/dashboard">
+                      <TextIcon
+                        _hover={{ color: colors.primary.hard }}
+                        fontWeight="medium"
+                        fontSize="16px"
+                        py="12px"
+                        icon={IconsName.admin}
+                        color={colors.dark.hard}
+                        colorIcon={colors.dark.hard}
+                      >
+                        Admin
+                      </TextIcon>
+                    </Link>
+                    <Link href="/">
+                      <TextIcon
+                        _hover={{ color: colors.primary.hard }}
+                        fontWeight="medium"
+                        fontSize="16px"
+                        py="12px"
+                        icon={IconsName.stock}
+                        color={colors.dark.hard}
+                        colorIcon={colors.dark.hard}
+                      >
+                        Stock
+                      </TextIcon>
+                    </Link>
+
+                    <Box
+                      mt="60px"
+                      display={{
+                        base: "block",
+                        md: "none",
+                        lg: "none",
+                        xl: "mone",
+                      }}
+                    >
+                      <Divider />
+                      <Box mb="20px" />
+                      <Box
+                        backgroundColor="gray.soft"
+                        borderRadius="10px"
+                        px="15px"
+                        py="20px"
+                      >
+                        <TextIcon
+                          _hover={{ color: colors.primary.hard }}
+                          fontWeight="medium"
+                          fontSize="16px"
+                          py="12px"
+                          icon={IconsName.store}
+                          color="primary.hard"
+                          colorIcon={colors.primary.hard}
+                          onClick={() => {
+                            // dispatch(logout());
+                            // router.push("/dashboard/auth/signin");
+                          }}
+                        >
+                          Toko kartini
+                        </TextIcon>
+                      </Box>
+
+                      <Box px="15px" py="20px">
+                        <TextIcon
+                          _hover={{ color: colors.primary.hard }}
+                          fontWeight="medium"
+                          fontSize="16px"
+                          py="12px"
+                          icon={IconsName.logout}
+                          colorIcon={theme.colors.red[400]}
+                          color="red.400"
+                          onClick={() => {
+                            // dispatch(logout());
+                            // router.push("/dashboard/auth/signin");
+                          }}
+                        >
+                          Log Out
+                        </TextIcon>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
             </Box>
           </Box>
         </Box>
-        <Box width={180}>
+        <Box
+          onClick={onOpenMenu}
+          display={{ base: "block", md: "none", lg: "none", xl: "mone" }}
+        >
+          <Icons name={IconsName.menu} color={colors.primary.hard} />
+        </Box>
+        <Box
+          width={180}
+          display={{ base: "none", md: "block", lg: "block", xl: "block" }}
+        >
           <Box display="flex" alignItems="center">
             <Image
               borderRadius="full"

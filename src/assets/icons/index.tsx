@@ -17,6 +17,12 @@ import SvgProduct from "./allProduct";
 import SvgOpen from "./open";
 import SvgClose from "./close";
 import MinusSVG from "./menus";
+import MenuSvg from "./menu";
+import HomeSvg from "./home";
+import AdminSvg from "./admin";
+import StockSvg from "./stock";
+import ArrowOpenSVG from "./arrowOpen";
+import StoreSvg from "./store";
 
 export enum IconsName {
   logo = "logo",
@@ -36,6 +42,12 @@ export enum IconsName {
   open = "open",
   close = "close",
   minus = "minus",
+  menu = "menu",
+  home = "home",
+  admin = "admin",
+  stock = "stock",
+  arrowOpen = "arrowOpen",
+  store = "store",
   //
   emailConfirm = "emailConfirm",
   allCategories = "allCategories",
@@ -86,9 +98,20 @@ export default function Icons({ name, width, height, color }: IconsComponent) {
         return <SvgEmailConfirm {...props} />;
       case IconsName.allCategories:
         return <SvgProduct {...props} />;
-
+      case IconsName.menu:
+        return <MenuSvg {...props} />;
       case IconsName.minus:
         return <MinusSVG {...props} />;
+      case IconsName.home:
+        return <HomeSvg {...props} />;
+      case IconsName.admin:
+        return <AdminSvg {...props} />;
+      case IconsName.stock:
+        return <StockSvg {...props} />;
+      case IconsName.arrowOpen:
+        return <ArrowOpenSVG {...props} />;
+      case IconsName.store:
+        return <StoreSvg {...props} />;
       default:
         return null;
     }

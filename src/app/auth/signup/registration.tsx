@@ -37,7 +37,12 @@ export default function RegistrationPage() {
         mt="50px"
         mb="50px"
       >
-        <Box width="564px">
+        <Box
+          width="auto"
+          height="auto"
+          px={{ base: "30px", lg: "90px", xl: "90px" }}
+          py={{ base: "30px", lg: "122px", xl: "122px" }}
+        >
           <Box display="flex" justifyContent="center">
             <Icons name={IconsName.logo} width={302.52} height={48} />
           </Box>
@@ -48,7 +53,7 @@ export default function RegistrationPage() {
               inputType="input"
               placeholder="Masukan Nama"
               name="name"
-              width={564}
+              width={{ base: "100%", lg: 564, xl: 564 }}
               onChange={onChange}
             />
             <Box mt="20px">
@@ -57,7 +62,7 @@ export default function RegistrationPage() {
                 inputType="input"
                 placeholder="Masukan Username"
                 name="username"
-                width={564}
+                width={{ base: "100%", lg: 564, xl: 564 }}
                 onChange={onChange}
               />
             </Box>
@@ -67,7 +72,7 @@ export default function RegistrationPage() {
                 inputType="input"
                 placeholder="Masukan Phone"
                 name="phone"
-                width={564}
+                width={{ base: "100%", lg: 564, xl: 564 }}
                 onChange={onChange}
               />
             </Box>
@@ -76,7 +81,7 @@ export default function RegistrationPage() {
                 label="Email"
                 inputType="input"
                 placeholder="Masukan Email"
-                width={564}
+                width={{ base: "100%", lg: 564, xl: 564 }}
                 type="email"
                 name="email"
                 onChange={onChange}
@@ -88,7 +93,7 @@ export default function RegistrationPage() {
                 inputType="input"
                 placeholder="Masukan Password"
                 type="password"
-                width={564}
+                width={{ base: "100%", lg: 564, xl: 564 }}
                 name="password"
                 onChange={onChange}
               />

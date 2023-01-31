@@ -55,7 +55,7 @@ export default function FormInput({
 
   return (
     <FormControl isInvalid={isInvalid}>
-      <FormLabel>{label}</FormLabel>
+      <FormLabel color="dark.hard">{label}</FormLabel>
       {children ? children : renderInput()}
       {isInvalid && <FormErrorMessage>{errorMessage}</FormErrorMessage>}
     </FormControl>

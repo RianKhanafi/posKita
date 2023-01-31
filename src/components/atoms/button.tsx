@@ -35,12 +35,16 @@ export default function Button({
       color={buttonTypeColor}
       bg={buttonType}
       fontSize={16}
-      width={full ? "100%" : 172}
+      width={{
+        base: full ? "100%" : 120,
+        lg: full ? "100%" : 172,
+        xl: full ? "100%" : 172,
+      }}
       onClick={onClick}
       height="48px"
       _hover={{
         backgroundColor:
-          typeButton === "primary" ? colors.primary.soft : colors.gray.soft,
+          typeButton === "primary" ? colors.primary.hard : colors.gray.soft,
       }}
       {...rest}
     >

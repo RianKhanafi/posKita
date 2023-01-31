@@ -1,20 +1,22 @@
 export const colors = {
   primary: {
-    hard: "#FF5C5D",
+    hard: "#63C476", //green
     medium: "#FF5C5D",
     soft: "#FF8585",
-    ultrasoft: "#FEF5F5",
+    ultrasoft: "#F3F7F4",
   },
   dark: {
-    hard: "#24314B",
+    hard: "#2B3A2E",
     medium: "#353E51",
-    soft: "#9FA2B4",
+    soft: "#F6F6F6",
     ultrasoft: "#ECECEC",
   },
+  greennominal: "#799C87",
   gray: {
-    hard: "#3F4859",
-    medium: "#6E6F88",
+    hard: "#D1D2D2",
+    medium: "#666D7B",
     soft: "#F6F6F6",
+    outline: "#D1D2D2",
   },
   purple: "#AD94ED",
   green: {

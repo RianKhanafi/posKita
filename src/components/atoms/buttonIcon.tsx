@@ -51,7 +51,7 @@ export default function ButtonIcon({
       className={openSans.className}
       _hover={{
         backgroundColor:
-          typeButton === "primary" ? colors.primary.soft : colors.gray.soft,
+          typeButton === "primary" ? colors.primary.hard : colors.gray.soft,
       }}
       leftIcon={
         <Box ml="5px">
