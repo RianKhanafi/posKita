@@ -12,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { Pagination, Text } from "components/atoms";
 import { PaginationProps } from "rc-pagination";
-import React from "react";
+import React, { useEffect } from "react";
 import { colors } from "theme/colors";
 
 export enum EAlignment {
@@ -27,6 +27,7 @@ export type ColumnDefinitionType<T, K extends keyof T> = {
   width?: number;
   renders?: (e: T, index: number) => React.ReactNode;
   isNumeric?: boolean;
+  isOptions?: boolean;
 };
 
 export type ITableHeader<T, K extends keyof T> = {
@@ -47,10 +48,28 @@ const TableHeader = <T, K extends keyof T>({
   header,
 }: ITableHeader<T, K>): JSX.Element => {
   return (
-    <Thead>
+    <Thead
+      borderTop={{ base: "1px solid", md: "1px solid", lg: 0, xl: 0 }}
+      borderColor="gray.soft"
+    >
       <Tr>
         {header.map((head) => (
-          <Th color="gray.medium" isNumeric={head?.isNumeric}>
+          <Th
+            color="gray.medium"
+            isNumeric={head?.isNumeric}
+            {...(head.isOptions && {
+              position: "sticky",
+              right: "0",
+              boxShadow: "base",
+              height: "20px",
+              backgroundColor: {
+                md: "gray.soft",
+                lg: "transparent",
+                xl: "transparent",
+              },
+              width: 30,
+            })}
+          >
             {head.title}
           </Th>
         ))}
@@ -64,7 +83,7 @@ const TableBody = <T, K extends keyof T>({
   header,
 }: TableRowsProps<T, K>): JSX.Element => {
   return (
-    <Tbody>
+    <Tbody position="relative">
       {data.map((elm: T, idx1: number) => (
         <Tr
           key={`tr-${idx1}`}
@@ -72,6 +91,7 @@ const TableBody = <T, K extends keyof T>({
           _hover={{
             backgroundColor: colors.gray.soft,
           }}
+          position="relative"
         >
           {header.map((head, idx2) => (
             <Td
@@ -81,14 +101,25 @@ const TableBody = <T, K extends keyof T>({
               fontSize="15px"
               height="15px"
               py="13px"
-              width={head.width}
+              // width={head.width}
+              {...(head.isOptions && {
+                position: "sticky",
+                right: "0",
+                height: "20px",
+                backgroundColor: {
+                  md: "gray.soft",
+                  lg: "transparent",
+                  xl: "transparent",
+                },
+                p: 0,
+              })}
             >
-              <div>
+              <Box {...(head.isOptions && { ml: "10px" })}>
                 {head.renders
                   ? head.renders(elm, idx1)
                   : //   till now, i dont get it as keyof reactNode :')
                     elm[head.key as keyof React.ReactNode]}
-              </div>
+              </Box>
             </Td>
           ))}
         </Tr>
@@ -107,9 +138,22 @@ export default function Table<T, K extends keyof T>({
   headerTitle = "Header Title",
   headerChildren = <div />,
 }: TableRowsProps<T, K>): JSX.Element {
+  // sticky required overfloe and height
   return (
-    <Box borderWidth="1px" borderRadius="lg" overflow="hidden">
-      <Box display="flex" justifyContent="space-between" py="6" px="6">
+    <Box
+      overflow="auto"
+      height="auto"
+      border="1px solid"
+      borderColor="gray.hard"
+      borderRadius="5px"
+    >
+      <Box
+        display="flex"
+        alignItems="center"
+        justifyContent="space-between"
+        py="6"
+        px="6"
+      >
         <Box>
           <Text fontSize={19} fontWeight="bold">
             {headerTitle}
@@ -118,29 +162,42 @@ export default function Table<T, K extends keyof T>({
         <Box>{headerChildren}</Box>
       </Box>
       <TableContainer>
-        <TableChakraUI variant="simple">
+        <TableChakraUI variant="striped">
           <TableHeader header={header} />
           <TableBody header={header} data={data} />
         </TableChakraUI>
       </TableContainer>
       <Box
         display="flex"
-        justifyContent="space-between"
-        alignItems="center"
+        flexDirection={{ base: "column", md: "column", lg: "row", xl: "row" }}
+        justifyContent={{
+          base: "flex-start",
+          md: "flex-start",
+          lg: "space-between",
+          xl: "space-between",
+        }}
+        alignItems={{
+          base: "flex-start",
+          md: "flex-start",
+          lg: "center",
+          xl: "center",
+        }}
         my="3"
         px="6"
       >
-        <Box>
+        <Box mt={{ base: "10px", md: "10px", lg: 0, xl: 0 }}>
           <Text color="#9FA2B4" fontSize="14px">
             Tampil {data?.length} Dari {total} data
           </Text>
         </Box>
-        <Pagination
-          total={total!}
-          pageSize={pageSize}
-          current={current}
-          onChange={onChange}
-        />
+        <Box mt={{ base: "10px", md: "10px", lg: 0, xl: 0 }} alignSelf="center">
+          <Pagination
+            total={total!}
+            pageSize={pageSize}
+            current={current}
+            onChange={onChange}
+          />
+        </Box>
       </Box>
     </Box>
   );

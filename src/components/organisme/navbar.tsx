@@ -8,54 +8,8 @@ import { usePathname, useRouter } from "next/navigation";
 import { logout } from "store/features/auth";
 import { useAppDispatch } from "store/hook";
 import { colors } from "theme/colors";
+import { menusSidebar } from "./routes";
 
-interface menus {
-  icon: IconsName;
-  name: string;
-  route: string;
-}
-const menus: menus[] = [
-  {
-    icon: IconsName.graph,
-    name: "Dashboard",
-    route: "/dashboard",
-  },
-  {
-    icon: IconsName.pie,
-    name: "Transaction",
-    route: "/dashboard/transaction",
-  },
-  {
-    icon: IconsName.box,
-    name: "Product",
-    route: "/dashboard/product",
-  },
-  {
-    icon: IconsName.box,
-    name: "Kategori",
-    route: "/dashboard/category",
-  },
-  {
-    icon: IconsName.box,
-    name: "Pelanggan",
-    route: "/dashboard/customer",
-  },
-  {
-    icon: IconsName.bell,
-    name: "Diskon",
-    route: "/dashboard/discount",
-  },
-  {
-    icon: IconsName.box,
-    name: "Inventory",
-    route: "/Dashboard",
-  },
-  {
-    icon: IconsName.box,
-    name: "Inventory",
-    route: "/dashboard/users",
-  },
-];
 export default function Navbar() {
   const pathname = usePathname();
   const dispatch = useAppDispatch();
@@ -70,6 +24,7 @@ export default function Navbar() {
       borderColor="#DFE0EB"
       backgroundColor="white"
       position="fixed"
+      display={{ base: "none", md: "none", lg: "block", xl: "block" }}
     >
       <Box
         display="flex"
@@ -78,7 +33,7 @@ export default function Navbar() {
         height="100%"
       >
         <Box mt={70}>
-          {menus.map((elm, index) => (
+          {menusSidebar.map((elm, index) => (
             <div key={index}>
               <Link href={elm.route}>
                 <Box

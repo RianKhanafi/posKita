@@ -132,7 +132,7 @@ export default function Cart({ cartOpen, onOpen }: any) {
           right={{ base: 0, md: 0, lg: "unset", xl: "unset" }}
           top={{ base: 0, md: "unset", lg: "unset", xl: "unset" }}
           bottom={{ base: 0, md: "unset", lg: "unset", xl: "unset" }}
-          zIndex={{ base: 10, md: "10", lg: "unset", xl: "unset" }}
+          zIndex={{ base: 20, md: 20, lg: 20, xl: 20 }}
           backgroundColor="white"
           width={{ base: "100%", md: "200px", lg: "91vh", x: "91vh" }}
           height={{ base: "100vh", xl: "initial", lg: "initial" }}
@@ -142,6 +142,7 @@ export default function Cart({ cartOpen, onOpen }: any) {
           flexDirection="column"
           justifyContent="space-between"
           overflow="auto"
+          mt="-70px"
         >
           <Box>
             <Box

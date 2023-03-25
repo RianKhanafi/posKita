@@ -2,7 +2,7 @@ import { IConsProps } from "module/common/type";
 import * as React from "react";
 
 function ArrowLeft(props: React.SVGProps<SVGSVGElement> & IConsProps) {
-  const { width = 32, height = 32, fill = "#F86061" } = props;
+  const { width = 32, height = 32, fill = "#6AC553" } = props;
   return (
     <svg
       width={width}

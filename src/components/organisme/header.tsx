@@ -7,6 +7,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useRef } from "react";
 import { colors } from "theme/colors";
+import { menusHeader, IMenus, menusSidebar } from "./routes";
 
 export default function Header() {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -24,12 +25,18 @@ export default function Header() {
     if (menuRef.current) menuRef.current.classList.remove("openmenu");
   };
 
+  // const menusWhenResponsive: IMenus[] = !pathname?.includes("dashboard")
+  //   ? menusSidebar
+  //   : menusHeader;
+
+  const menusWhenResponsive: IMenus[] = menusHeader;
+
   return (
     <nav>
       <Box
         position="fixed"
         height="70px"
-        width="100%"
+        width="73%"
         borderBottom="1px"
         borderColor="gray.hard"
         display="flex"
@@ -38,6 +45,7 @@ export default function Header() {
         px={{ base: "15px", lg: "37px", xl: "37px" }}
         backgroundColor="white"
         zIndex="3"
+        // pr="200px"
       >
         <Box
           display="flex"
@@ -52,7 +60,7 @@ export default function Header() {
           <Box display={{ base: "none", lg: "block", xl: "block" }}>
             <Input
               placeholder="Cari produk"
-              width={448}
+              width="350px"
               type="search"
               rightIcon={IconsName.filter}
             />
@@ -136,54 +144,30 @@ export default function Header() {
                     }}
                     p={{ base: "20px", md: "unset", lg: "unset", xl: "unset" }}
                   >
-                    <Link href="/pos">
-                      <TextIcon
-                        _hover={{ color: colors.primary.hard }}
-                        fontWeight="medium"
-                        fontSize="16px"
-                        py="12px"
-                        icon={IconsName.home}
-                        {...(pathname === "/pos" && {
-                          colorIcon: colors.primary.hard,
-                        })}
-                        color={
-                          pathname === "/pos" ? "primary.hard" : "dark.hard"
-                        }
-                        colorIcon={
-                          pathname === "/pos"
-                            ? colors.primary.hard
-                            : colors.dark.hard
-                        }
-                      >
-                        Pos
-                      </TextIcon>
-                    </Link>
-                    <Link href="/dashboard">
-                      <TextIcon
-                        _hover={{ color: colors.primary.hard }}
-                        fontWeight="medium"
-                        fontSize="16px"
-                        py="12px"
-                        icon={IconsName.admin}
-                        color={colors.dark.hard}
-                        colorIcon={colors.dark.hard}
-                      >
-                        Admin
-                      </TextIcon>
-                    </Link>
-                    <Link href="/">
-                      <TextIcon
-                        _hover={{ color: colors.primary.hard }}
-                        fontWeight="medium"
-                        fontSize="16px"
-                        py="12px"
-                        icon={IconsName.stock}
-                        color={colors.dark.hard}
-                        colorIcon={colors.dark.hard}
-                      >
-                        Stock
-                      </TextIcon>
-                    </Link>
+                    {menusWhenResponsive?.map((e, i) => (
+                      <Link href={e.route} key={i}>
+                        <TextIcon
+                          _hover={{ color: colors.primary.hard }}
+                          fontWeight="medium"
+                          fontSize="16px"
+                          py="12px"
+                          icon={e.icon}
+                          {...(pathname === e.route && {
+                            colorIcon: colors.primary.hard,
+                          })}
+                          color={
+                            pathname === e.route ? "primary.hard" : "dark.hard"
+                          }
+                          colorIcon={
+                            pathname === e.route
+                              ? colors.primary.hard
+                              : colors.dark.hard
+                          }
+                        >
+                          {e.name}
+                        </TextIcon>
+                      </Link>
+                    ))}
 
                     <Box
                       mt="60px"

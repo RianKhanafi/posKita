@@ -23,6 +23,7 @@ import AdminSvg from "./admin";
 import StockSvg from "./stock";
 import ArrowOpenSVG from "./arrowOpen";
 import StoreSvg from "./store";
+import TreeDotSvg from "./treedots";
 
 export enum IconsName {
   logo = "logo",
@@ -48,6 +49,7 @@ export enum IconsName {
   stock = "stock",
   arrowOpen = "arrowOpen",
   store = "store",
+  treedot = "treedot",
   //
   emailConfirm = "emailConfirm",
   allCategories = "allCategories",
@@ -112,6 +114,9 @@ export default function Icons({ name, width, height, color }: IconsComponent) {
         return <ArrowOpenSVG {...props} />;
       case IconsName.store:
         return <StoreSvg {...props} />;
+
+      case IconsName.treedot:
+        return <TreeDotSvg {...props} />;
       default:
         return null;
     }

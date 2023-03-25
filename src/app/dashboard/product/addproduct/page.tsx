@@ -7,8 +7,12 @@ import Link from "next/link";
 
 export default function addProduct() {
   return (
-    <Box display="flex" ml="250px">
-      <Box width="564px">
+    <Box
+      display="flex"
+      ml={{ base: "auto", md: "auto", lg: "250px", xl: "250px" }}
+      p={{ base: "15px", md: "15px", lg: 0, xl: 0 }}
+    >
+      <Box width={{ base: "auto", md: "auto", lg: "564px", xl: "564px" }}>
         <Link href="/dashboard/product/">
           <Box mb="32px">
             <TextIcon
@@ -38,20 +42,20 @@ export default function addProduct() {
             mt="17px"
             width="100%"
           >
-            <Box>
+            <Box pr="10px">
               <FormInput
                 label="Harga Beli"
                 inputType="input"
-                placeholder="Masukan harga beli"
-                width="255px"
+                placeholder="Rp. 10.000"
+                width={{ base: "100%", md: "100%", lg: "255px", xl: "255px" }}
               />
             </Box>
-            <Box>
+            <Box pl="10px">
               <FormInput
                 label="Harga Jual"
                 inputType="input"
-                placeholder="Masukan harga jual"
-                width="255px"
+                placeholder="Rp. 10.000"
+                width={{ base: "100%", md: "100%", lg: "255px", xl: "255px" }}
               />
             </Box>
           </Box>

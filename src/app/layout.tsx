@@ -5,7 +5,7 @@ import { extendTheme } from "@chakra-ui/react";
 import "styles/globals.css";
 import { Provider } from "react-redux";
 import store from "store";
-import React from "react";
+import React, { useEffect } from "react";
 import { openSans } from "theme/font";
 
 const breakpoints = {

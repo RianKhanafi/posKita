@@ -9,6 +9,7 @@ import React, { useState } from "react";
 interface Customer {
   name: string;
   date: string;
+  no: string;
   option?: string;
 }
 
@@ -18,19 +19,23 @@ const columns: ColumnDefinitionType<Customer, keyof Customer>[] = [
     title: "Name",
   },
   {
+    key: "no",
+    title: "No",
+  },
+  {
     key: "date",
     title: "Date",
   },
   {
     key: "option",
-    title: "Options",
-    width: 200,
+    title: "",
+    width: 30,
+    isOptions: true,
     renders: (e) => (
       <ButtonIcon
         typeButton="none"
         iconName={IconsName.trash}
         style={{ all: "unset" }}
-
       />
     ),
   },
@@ -40,42 +45,52 @@ const data: Customer[] = [
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
   {
     name: "Nasi Goreng Komplit",
     date: "May 26, 2019",
+    no: "086617777281",
   },
 ];
 

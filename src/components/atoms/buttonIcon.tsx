@@ -14,6 +14,8 @@ interface TButton extends ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children?: React.ReactNode;
   iconName?: IconsName;
+  iconHeight?: number;
+  iconWidth?: number;
 }
 
 export default function ButtonIcon({
@@ -22,6 +24,8 @@ export default function ButtonIcon({
   onClick,
   children,
   iconName,
+  iconHeight,
+  iconWidth,
   ...rest
 }: TButton) {
   const buttonType = classNames({
@@ -54,8 +58,13 @@ export default function ButtonIcon({
           typeButton === "primary" ? colors.primary.hard : colors.gray.soft,
       }}
       leftIcon={
-        <Box ml="5px">
-          <Icons name={iconName} color={IconButtonColor} />
+        <Box>
+          <Icons
+            name={iconName}
+            color={IconButtonColor}
+            width={iconWidth}
+            height={iconHeight}
+          />
         </Box>
       }
       height="48px"

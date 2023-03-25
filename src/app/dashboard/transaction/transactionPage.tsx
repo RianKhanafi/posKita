@@ -23,6 +23,7 @@ const columns: ColumnDefinitionType<Transaction, keyof Transaction>[] = [
   {
     key: "price",
     title: "Price",
+    isNumeric: true,
   },
   {
     key: "discount",
@@ -31,6 +32,7 @@ const columns: ColumnDefinitionType<Transaction, keyof Transaction>[] = [
   {
     key: "qty",
     title: "Qty",
+    isNumeric: true,
   },
   {
     key: "date",
@@ -38,7 +40,9 @@ const columns: ColumnDefinitionType<Transaction, keyof Transaction>[] = [
   },
   {
     key: "option",
-    title: "Options",
+    title: "",
+    width: 30,
+    isOptions: true,
     renders: (e) => <ButtonIcon typeButton="none" iconName={IconsName.more} />,
   },
 ];

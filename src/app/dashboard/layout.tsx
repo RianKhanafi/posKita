@@ -15,7 +15,13 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       </nav>
       <Box display="flex">
         <Navbar />
-        <Box mt="70px" ml="250px" width="100%" p="25px" backgroundColor="white">
+        <Box
+          mt="70px"
+          ml={{ base: 0, md: 0, lg: "250px", xl: "250px" }}
+          width="100%"
+          p={{ base: "0", md: "0", lg: "25px", xl: "25px" }}
+          backgroundColor="white"
+        >
           {children}
         </Box>
       </Box>

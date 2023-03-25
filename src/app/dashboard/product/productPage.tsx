@@ -1,10 +1,11 @@
 "use client";
 import { Box } from "@chakra-ui/react";
-import { IconsName } from "assets/icons";
+import Icons, { IconsName } from "assets/icons";
 import { ButtonIcon, Input } from "components/atoms";
 import Table, { ColumnDefinitionType } from "components/molecules/Table";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
+import { colors } from "theme/colors";
 
 interface Cat {
   name: string;
@@ -30,6 +31,28 @@ const columns: ColumnDefinitionType<Cat, keyof Cat>[] = [
     key: "gender",
     title: "Gender",
     width: 150,
+  },
+  {
+    key: "gender",
+    title: "Gender",
+    width: 150,
+  },
+  {
+    key: "gender",
+    title: "Gender",
+    width: 150,
+  },
+  {
+    key: "gender",
+    title: "Gender",
+    width: 150,
+  },
+  {
+    key: "gender",
+    title: "",
+    width: 30,
+    isOptions: true,
+    renders: (a) => <Icons name={IconsName.treedot} />,
   },
 ];
 
@@ -121,23 +144,36 @@ export default function Productpage() {
   const [page, setPage] = useState<number>(1);
 
   return (
-    <Box>
+    <Box mt="20px">
       <Table
-        headerTitle="List Produk"
+        headerTitle="Produk"
         headerChildren={
-          <Box display="flex">
-            <Input
+          <Box
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            justifyContent="center"
+          >
+            {/* <Input
+              display={{ base: "none", md: "none", lg: "block", xl: "block" }}
               width={300}
               placeholder="Cari nama & kategori produk"
               mr="20px"
-            />
+              type="search"
+            /> */}
+            <Box mr="30px">
+              <Icons name={IconsName.filter} color={colors.dark.hard} />
+            </Box>
             <ButtonIcon
               typeButton="primary"
-              width="fit-content"
               onClick={() => router.push("/dashboard/product/addproduct")}
               iconName={IconsName.plus}
+              width="95px"
+              fontSize="12px"
+              iconWidth={21}
+              iconHeight={21}
             >
-              Produk Baru
+              Tambah
             </ButtonIcon>
           </Box>
         }
